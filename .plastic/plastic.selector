@@ -1,0 +1,4 @@
+repository "VR FPS@c02yc@cloud"
+  path "/"
+    br "/main"
+    co "/main"
