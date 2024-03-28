@@ -8,10 +8,27 @@ using UnityEngine.XR;
 //reference: https://www.youtube.com/watch?v=1gPLfY93JHk
 public class Shotgun : MonoBehaviour
 {
+    /*
+    private Transform gunPoint;
+    
+    private Vector3 leftRayDirection;
+    private Vector3 rightRayDirection;
+    private Vector3 topRayDirection;
+    private Vector3 bottomRayDirection;
+    
+    private float rayLengthForward = 10f;
+    private float rayLengthOuter = 7.5f;
+    private int forwardDamage = 10;
+    private int outerDamage = 6;
+    */
+
+    [SerializeField] private Transform gunPoint;
+
     // Start is called before the first frame update
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -36,14 +53,16 @@ public class Shotgun : MonoBehaviour
             }
             
         }
-        Shoot();
+
+        //Shoot();
     }
 
     public void Shoot()
     {
+        
         Debug.Log("Shoot shotgun!");
         
-        Transform gunPoint = transform.GetChild(0);
+        //Transform gunPoint = transform.GetChild(0);
         Vector3 leftRayDirection = gunPoint.forward + new Vector3(0f, 0f, 0.2f);
         Vector3 rightRayDirection = gunPoint.forward + new Vector3(0f, 0f, -0.2f);
         Vector3 topRayDirection = gunPoint.forward + new Vector3(0f, 0.2f, 0f);
@@ -52,53 +71,49 @@ public class Shotgun : MonoBehaviour
         float rayLengthOuter = 7.5f;
         int forwardDamage = 10;
         int outerDamage = 6;
-
-        
-        Debug.DrawLine(gunPoint.position, gunPoint.forward * rayLengthForward, Color.blue);
-        Debug.DrawLine(gunPoint.position, leftRayDirection * rayLengthOuter, Color.green);
-        Debug.DrawLine(gunPoint.position, rightRayDirection * rayLengthOuter, Color.red);
-        Debug.DrawLine(gunPoint.position, topRayDirection * rayLengthOuter, Color.yellow);
-        Debug.DrawLine(gunPoint.position, bottomRayDirection * rayLengthOuter, Color.magenta);
         
 
-
-        /*
-        RaycastHit hit;
-        Vector3 rayStart = gunPoint.position;
-        Vector3 rayDirection = gunPoint.forward;
-        float rayLength = 100f;
-        Vector3 rayEndPoint = gunPoint.forward * rayLength;
-
-        if (Physics.Raycast(rayStart, rayDirection, out hit, rayLength)) {
-            Debug.Log(hit.collider.name);
-        }
-        Debug.DrawLine(rayStart, rayEndPoint, Color.green, 10);
-        */
+        
+        Debug.DrawLine(gunPoint.position, gunPoint.forward * rayLengthForward, Color.blue, 10);
+        Debug.DrawLine(gunPoint.position, leftRayDirection * rayLengthOuter, Color.green, 10);
+        Debug.DrawLine(gunPoint.position, rightRayDirection * rayLengthOuter, Color.red, 10);
+        Debug.DrawLine(gunPoint.position, topRayDirection * rayLengthOuter, Color.yellow, 10);
+        Debug.DrawLine(gunPoint.position, bottomRayDirection * rayLengthOuter, Color.magenta, 10);
+        
 
         //forward shooting raycast line
-        MakeShootingRaycast(gunPoint, gunPoint.forward, rayLengthForward, forwardDamage);
+        MakeShootingRaycast(gunPoint, gunPoint.forward, rayLengthForward, forwardDamage, Color.blue);
 
         //left shooting raycast line
-        MakeShootingRaycast(gunPoint, leftRayDirection, rayLengthOuter, outerDamage);
+        MakeShootingRaycast(gunPoint, leftRayDirection, rayLengthOuter, outerDamage, Color.green);
 
         //right shooting raycast line
-        MakeShootingRaycast(gunPoint, rightRayDirection, rayLengthOuter, outerDamage);
+        MakeShootingRaycast(gunPoint, rightRayDirection, rayLengthOuter, outerDamage, Color.red);
 
         //top shooting raycast line
-        MakeShootingRaycast(gunPoint, topRayDirection, rayLengthOuter, outerDamage);
+        MakeShootingRaycast(gunPoint, topRayDirection, rayLengthOuter, outerDamage, Color.yellow);
 
         //bottom shooting raycast line
-        MakeShootingRaycast(gunPoint, bottomRayDirection, rayLengthOuter, outerDamage);
+        MakeShootingRaycast(gunPoint, bottomRayDirection, rayLengthOuter, outerDamage, Color.magenta);
     }
 
-    private void MakeShootingRaycast(Transform gunPoint, Vector3 rayDirection, float rayLength, int damage) {
+    private void MakeShootingRaycast(Transform gunPoint, Vector3 rayDirection, float rayLength, int damage, Color c) {
         RaycastHit hit;
         Vector3 rayStart = gunPoint.position;
-        //Vector3 rayEndPoint = rayDirection * rayLength;
+        Vector3 rayEndPoint = rayDirection * rayLength;
 
         if (Physics.Raycast(rayStart, rayDirection, out hit, rayLength)) {
             Debug.Log(hit.collider.name);
             //access enemy and deal damage
+            Collider collided = hit.collider;
+            if (collided.CompareTag("Enemy") || collided.CompareTag("Neutral") || collided.CompareTag("Friendly")) {
+                if (collided.GetComponent<Character>() != null) { 
+                    collided.GetComponent<Character>().TakeDamage(damage);
+                    //hit.collider.GetComponent<Character>().TakeDamage(damage);
+                } 
+            }
+
         }
+        Debug.DrawLine(rayStart, rayEndPoint, c);
     }
 }
