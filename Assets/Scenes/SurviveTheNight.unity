@@ -241,7 +241,6 @@ GameObject:
   - component: {fileID: 133097885}
   - component: {fileID: 133097887}
   - component: {fileID: 133097886}
-  - component: {fileID: 133097888}
   m_Layer: 0
   m_Name: Left Hand
   m_TagString: Untagged
@@ -578,19 +577,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_PhysicsTriggerInteraction: 1
---- !u!114 &133097888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133097883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e7a08ac02a98ef4c88ff5dfc8c5ea8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_controller: 0
 --- !u!1 &311022083
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +942,7 @@ Transform:
   m_GameObject: {fileID: 749822639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.286, z: 0.782}
+  m_LocalPosition: {x: 0, y: 0.286, z: 0.48}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1450,10 +1436,25 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1658698032}
+      - m_Target: {fileID: 919132147591185527}
         m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
-        m_MethodName: Shoot
-        m_Mode: 1
+        m_MethodName: OnIsActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 919132147591185527}
+        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
+        m_MethodName: OnIsActivated
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1462,9 +1463,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
@@ -1541,19 +1539,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &1658698032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147591185526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92954a29beda874408ecc769e6d73389, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPoint: {fileID: 1876290729}
 --- !u!1 &1665328682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,7 +2441,6 @@ GameObject:
   - component: {fileID: 1941967722}
   - component: {fileID: 1941967724}
   - component: {fileID: 1941967723}
-  - component: {fileID: 1941967725}
   m_Layer: 0
   m_Name: Right Hand
   m_TagString: Untagged
@@ -2793,19 +2777,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_PhysicsTriggerInteraction: 1
---- !u!114 &1941967725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941967720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e7a08ac02a98ef4c88ff5dfc8c5ea8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_controller: 1
 --- !u!4 &188283695934007174
 Transform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2802,7 @@ Transform:
   m_GameObject: {fileID: 919132147591185526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.031, y: 0.597, z: 0.676}
+  m_LocalPosition: {x: 0.031, y: 0.597, z: 0.37399998}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2869,7 +2840,7 @@ GameObject:
   - component: {fileID: 543450652049727180}
   - component: {fileID: 1658698027}
   - component: {fileID: 1658698028}
-  - component: {fileID: 1658698032}
+  - component: {fileID: 919132147591185527}
   m_Layer: 12
   m_Name: shotgun
   m_TagString: Untagged
@@ -2877,6 +2848,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132147591185527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147591185526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92954a29beda874408ecc769e6d73389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPoint: {fileID: 1876290729}
 --- !u!1 &1012341822622033676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,8 +3219,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.044396475, y: 0.0032786557, z: 0.00097442494}
-  m_Center: {x: -0.00054243207, y: 0.0022138346, z: -0.00048720874}
+  m_Size: {x: 0.04245583, y: 0.0038627484, z: 0.00097442494}
+  m_Center: {x: 0.00003850758, y: 0.0019217882, z: -0.00048720874}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
