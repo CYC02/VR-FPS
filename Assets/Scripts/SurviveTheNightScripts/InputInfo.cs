@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.XR;
 
 //source reference: https://www.youtube.com/watch?v=d2X-2nR_6WY
+//source reference: https://www.youtube.com/watch?v=Kh_94glqO-0
 //unity reference: https://docs.unity3d.com/Manual/xr_input.html
 
 /*
- This script is used for debugging and identifying the XR controllers and inputs.
+ * Author: Cindy Chan
+ * This script is used for debugging and identifying the XR controllers and inputs.
  */
 public class InputInfo : MonoBehaviour
 {
+    public InputDevice rightController;
+    public InputDevice leftController;
+    public InputDevice headMountDisplay;
     private enum ControllerSide 
     {
         Left_Controller,
@@ -55,6 +60,10 @@ public class InputInfo : MonoBehaviour
                 Debug.Log("Right Controller not found");
             }
         }
+
+        if (!rightController.isValid || !leftController.isValid || !headMountDisplay.isValid) {
+            InitializeInputDevices();
+        }
     }
 
     private void CheckController(InputDevice d) 
@@ -74,5 +83,28 @@ public class InputInfo : MonoBehaviour
             Debug.Log("Trigger button is pressed.");
         }
 
+    }
+
+    private void InitializeInputDevices() {
+        if (!rightController.isValid) {
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref rightController);
+        }
+        if (!leftController.isValid)
+        {
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref leftController);
+        }
+        if (!headMountDisplay.isValid)
+        {
+            InitializeInputDevice(InputDeviceCharacteristics.HeadMounted, ref headMountDisplay);
+        }
+    }
+
+    private void InitializeInputDevice(InputDeviceCharacteristics inputCharacteristics, ref InputDevice inputDevice) { 
+        List<InputDevice> devices = new List<InputDevice>();
+        InputDevices.GetDevicesWithCharacteristics(inputCharacteristics, devices);
+
+        if (devices.Count > 0) { 
+            inputDevice= devices[0];
+        }
     }
 }

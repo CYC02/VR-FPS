@@ -4,45 +4,80 @@ using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 //reference: https://www.youtube.com/watch?v=j9F6kEB9rBg
 //reference: https://www.youtube.com/watch?v=1gPLfY93JHk
+
+/*
+ * Author: Cindy Chan
+ * This script manages the shotgun's shooting and other functionality.
+ */
+[RequireComponent(typeof(InputInfo))]
 public class Shotgun : MonoBehaviour
 {
     [SerializeField] private Transform gunPoint;
     private bool IsActivated = false;
+    private XRGrabInteractable grabInteractable;
+    private InputInfo inputInfo;
 
     // Start is called before the first frame update
 
     void Start()
     {
-
+        grabInteractable = GetComponent<XRGrabInteractable>();
+        inputInfo = GetComponent<InputInfo>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        List<InputDevice> m_device = new List<InputDevice>();
-        InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right, m_device);
+        //List<InputDevice> m_device = new List<InputDevice>();
+        //InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right, m_device);
         
-        if (m_device.Count == 1) {
-            InputDevice device = m_device[0];
+        //if (m_device.Count == 1) {
+            //InputDevice device = m_device[0];
             //One right side device found
-            bool triggerButtonDown = false;
-            bool gripButtonDown = false;
+            bool rightTriggerButtonDown = false;
+            bool rightGripButtonDown = false;
 
-                //if gripping the gun and pressed the trigger button, then shoot
-                if (device.TryGetFeatureValue(CommonUsages.gripButton, out gripButtonDown) && gripButtonDown) {
-                Debug.Log("Grip button pressed");
-                    if (device.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonDown) && triggerButtonDown) {
+            bool leftGripButtonDown = false;
+
+
+            //if gripping the gun and pressed the trigger button, then shoot
+            if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.gripButton, out rightGripButtonDown) && rightGripButtonDown)
+            //if (device.TryGetFeatureValue(CommonUsages.gripButton, out rightGripButtonDown) && rightGripButtonDown)
+            {
+                //Debug.Log("Grip button pressed");
+                //ensures that the shooting only occurs when activating/holding the shotgun
+                if (IsActivated)
+                {
+                    if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
+                    //if (device.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
+                    {
                         Debug.Log("Right trigger button pressed");
-                        if (IsActivated) {
-                            Shoot();
-                        }
+
+                        Shoot();
+
                     }
+
+
                 }
-                
-        }
+                //extracting bullet casing
+                //ensure left hand grip is true
+                if (inputInfo.leftController.TryGetFeatureValue(CommonUsages.gripButton, out leftGripButtonDown) && leftGripButtonDown) {
+                    //get velocity of left hand controller
+                    if (inputInfo.leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftVelocity))
+                    {
+                        //if the left hand passes a certain forward velocity, move the fore-end up
+                        //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
+                        float leftMag = leftVelocity.magnitude;
+                        Debug.Log("left velocity");
+                        Debug.Log(leftMag);
+                    }                    
+                }
+            }   
+        //}
 
         //Shoot();
     }
@@ -111,4 +146,5 @@ public class Shotgun : MonoBehaviour
         IsActivated = activate;
         Debug.Log("Activate shotgun: " + activate);
     }
+
 }
