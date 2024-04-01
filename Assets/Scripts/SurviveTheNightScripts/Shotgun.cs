@@ -176,6 +176,9 @@ public class Shotgun : MonoBehaviour
     public void OnIsActivated(bool activate) {
         IsActivated = activate;
         Debug.Log("Activate shotgun: " + activate);
+        if (!activate) {
+            SwitchForeendPosition(false);
+        }
     }
 
     private void SwitchForeendPosition(bool up) {
