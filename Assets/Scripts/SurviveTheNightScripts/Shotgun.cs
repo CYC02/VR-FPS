@@ -19,70 +19,92 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private Transform gunPoint;
     [SerializeField] private Transform foreend;
     private bool IsActivated = false;
-    private XRGrabInteractable grabInteractable;
+    //private XRGrabInteractable grabInteractable;
     private InputInfo inputInfo;
+
+    private Vector3 foreendUp;
+    private Vector3 foreendDown;
+    private bool isForeendUp;
+    private float foreendCooldownDuration = 0.2f;
+    private float foreendCooldownTimer = 0f;
 
     // Start is called before the first frame update
 
     void Start()
     {
-        grabInteractable = GetComponent<XRGrabInteractable>();
+        //grabInteractable = GetComponent<XRGrabInteractable>();
         inputInfo = GetComponent<InputInfo>();
+
+        foreendUp = foreend.localPosition + foreend.forward * 0.1f;
+        foreendDown = foreend.localPosition;
+        isForeendUp= false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //List<InputDevice> m_device = new List<InputDevice>();
-        //InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right, m_device);
-        
-        //if (m_device.Count == 1) {
-            //InputDevice device = m_device[0];
-            //One right side device found
-            bool rightTriggerButtonDown = false;
-            bool rightGripButtonDown = false;
+        bool rightTriggerButtonDown = false;
+        bool rightGripButtonDown = false;
 
-            bool leftGripButtonDown = false;
+        bool leftGripButtonDown = false;
 
+        if (foreendCooldownTimer > 0f)
+        {
+            foreendCooldownTimer -= Time.deltaTime;
+        }
+        else {
+            foreendCooldownTimer = 0f;
+        }
 
-            //if gripping the gun and pressed the trigger button, then shoot
-            if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.gripButton, out rightGripButtonDown) && rightGripButtonDown)
-            //if (device.TryGetFeatureValue(CommonUsages.gripButton, out rightGripButtonDown) && rightGripButtonDown)
+        //if gripping the gun and pressed the trigger button, then shoot
+        if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.gripButton, out rightGripButtonDown) && rightGripButtonDown)
+        //if (device.TryGetFeatureValue(CommonUsages.gripButton, out rightGripButtonDown) && rightGripButtonDown)
+        {
+            //Debug.Log("Grip button pressed");
+            //ensures that the shooting only occurs when activating/holding the shotgun
+            if (IsActivated)
             {
-                //Debug.Log("Grip button pressed");
-                //ensures that the shooting only occurs when activating/holding the shotgun
-                if (IsActivated)
+                if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
+                //if (device.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
                 {
-                    if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
-                    //if (device.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
-                    {
-                        Debug.Log("Right trigger button pressed");
+                    Debug.Log("Right trigger button pressed");
 
-                        Shoot();
-
-                    }
-
+                    Shoot();
 
                 }
-                //extracting bullet casing
-                //ensure left hand grip is true
-                if (inputInfo.leftController.TryGetFeatureValue(CommonUsages.gripButton, out leftGripButtonDown) && leftGripButtonDown) {
-                    //get velocity of left hand controller
-                    if (inputInfo.leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftVelocity))
-                    {
-                        //if the left hand passes a certain forward velocity, move the fore-end up
-                        //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
-                        float leftMag = leftVelocity.magnitude;
-                        Debug.Log(leftMag);
-                        if (leftMag > 2) {
-                            foreend.localPosition = foreend.localPosition + foreend.right * 0.1f;
-                        }
-                    }                    
-                } 
-            }   
-        //}
 
-        //Shoot();
+
+            }
+            //extracting bullet casing
+            //ensure left hand grip is true
+            if (inputInfo.leftController.TryGetFeatureValue(CommonUsages.gripButton, out leftGripButtonDown) && leftGripButtonDown)
+            {
+                //get velocity of left hand controller
+                if (inputInfo.leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftVelocity))
+                {
+                    //if the left hand passes a certain forward velocity, move the fore-end up
+                    //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
+                    float leftMag = leftVelocity.magnitude;
+                    //Debug.Log(leftMag);
+                    if (foreendCooldownTimer == 0) { 
+                        if (isForeendUp != true && leftMag > 1.2f)
+                        {
+                            SwitchForeendPosition(true);
+                        }
+                        else
+                        {
+                            if (leftMag > 0.7f) { 
+                                SwitchForeendPosition(false);
+                            }
+                        }
+                        foreendCooldownTimer = foreendCooldownDuration;
+                    }
+                }
+            }
+            else { 
+            
+            }
+        }   
     }
 
     private void Shoot()
@@ -148,6 +170,17 @@ public class Shotgun : MonoBehaviour
     public void OnIsActivated(bool activate) {
         IsActivated = activate;
         Debug.Log("Activate shotgun: " + activate);
+    }
+
+    private void SwitchForeendPosition(bool up) {
+        if (up)
+        {
+            foreend.localPosition = foreendUp;
+        }
+        else {
+            foreend.localPosition = foreendDown;
+        }
+        isForeendUp= up;
     }
 
 }
