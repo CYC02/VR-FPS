@@ -17,6 +17,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Shotgun : MonoBehaviour
 {
     [SerializeField] private Transform gunPoint;
+    [SerializeField] private Transform foreend;
     private bool IsActivated = false;
     private XRGrabInteractable grabInteractable;
     private InputInfo inputInfo;
@@ -72,10 +73,12 @@ public class Shotgun : MonoBehaviour
                         //if the left hand passes a certain forward velocity, move the fore-end up
                         //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
                         float leftMag = leftVelocity.magnitude;
-                        Debug.Log("left velocity");
                         Debug.Log(leftMag);
+                        if (leftMag > 2) {
+                            foreend.localPosition = foreend.localPosition + foreend.right * 0.1f;
+                        }
                     }                    
-                }
+                } 
             }   
         //}
 
