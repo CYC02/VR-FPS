@@ -86,14 +86,16 @@ public class Shotgun : MonoBehaviour
                     //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
                     float leftMag = leftVelocity.magnitude;
                     //Debug.Log(leftMag);
-                    if (foreendCooldownTimer == 0) { 
+                    if (foreendCooldownTimer == 0)
+                    {
                         if (isForeendUp != true && leftMag > 1.2f)
                         {
                             SwitchForeendPosition(true);
                         }
                         else
                         {
-                            if (leftMag > 0.7f) { 
+                            if (leftMag > 0.7f)
+                            {
                                 SwitchForeendPosition(false);
                             }
                         }
@@ -101,10 +103,14 @@ public class Shotgun : MonoBehaviour
                     }
                 }
             }
-            else { 
-            
+            else
+            {
+                SwitchForeendPosition(false);
             }
-        }   
+        }
+        else { 
+            SwitchForeendPosition(false);
+        }
     }
 
     private void Shoot()
