@@ -28,6 +28,10 @@ public class Shotgun : MonoBehaviour
     private float foreendCooldownDuration = 0.2f;
     private float foreendCooldownTimer = 0f;
 
+    [SerializeField] private GameObject slugDropZone;
+    private int slugAmmoLoadedInGun = 0;
+
+
     // Start is called before the first frame update
 
     void Start()
@@ -72,8 +76,6 @@ public class Shotgun : MonoBehaviour
                     Shoot();
 
                 }
-
-
             }
             //extracting bullet casing
             //ensure left hand grip is true
@@ -173,6 +175,7 @@ public class Shotgun : MonoBehaviour
         //Debug.DrawLine(rayStart, rayEndPoint, c);
     }
 
+    //Event triggers this function which determines if the Shotgun is activated(picked up) or deactivated (dropped from hand)
     public void OnIsActivated(bool activate) {
         IsActivated = activate;
         Debug.Log("Activate shotgun: " + activate);
@@ -181,6 +184,7 @@ public class Shotgun : MonoBehaviour
         }
     }
 
+    //Switched the foreend position on the gun in the up position or down
     private void SwitchForeendPosition(bool up) {
         if (up)
         {
@@ -192,4 +196,26 @@ public class Shotgun : MonoBehaviour
         isForeendUp= up;
     }
 
+    //Event triggers this function which hides the mesh for the slug drop zone and registers that a slug is inside the drop zone
+    public void OnSelectEnteredAmmoDropZone() {
+        MeshRenderer dropZoneMeshRender = slugDropZone.GetComponent<MeshRenderer>();
+        if (dropZoneMeshRender != null)
+        {
+            dropZoneMeshRender.enabled = false;
+        }
+        else {
+            Debug.LogError("Drop zone's mesh render is null");
+        }
+    }
+    public void OnSelectExitedAmmoDropZone() {
+        MeshRenderer dropZoneMeshRender = slugDropZone.GetComponent<MeshRenderer>();
+        if (dropZoneMeshRender != null)
+        {
+            dropZoneMeshRender.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("Drop zone's mesh render is null");
+        }
+    }
 }

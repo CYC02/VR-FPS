@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1185774364348706286}
   - component: {fileID: 1580148354082704084}
   - component: {fileID: 4856837221614854943}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SlugAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 256
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 5376464732351036317}
   - component: {fileID: 1449619008746102239}
   - component: {fileID: 8762105038389097126}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SlugAmmoOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
