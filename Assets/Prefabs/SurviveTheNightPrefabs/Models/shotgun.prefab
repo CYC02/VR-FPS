@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 2877713338160929013}
   m_Layer: 12
   m_Name: shotgun
-  m_TagString: Untagged
+  m_TagString: Shotgun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -730,6 +730,7 @@ MonoBehaviour:
   gunPoint: {fileID: 3234880734371134343}
   foreend: {fileID: 3424686838869331921}
   slugDropZone: {fileID: 4177163346662910111}
+  maxSlugAmmoLoadedInGun: 4
 --- !u!1 &7311951027316555173
 GameObject:
   m_ObjectHideFlags: 0

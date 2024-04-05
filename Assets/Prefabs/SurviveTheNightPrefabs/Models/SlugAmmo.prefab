@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1185774364348706286}
   - component: {fileID: 1580148354082704084}
   - component: {fileID: 4856837221614854943}
+  - component: {fileID: 2214866175707531483}
   m_Layer: 12
   m_Name: SlugAmmo
   m_TagString: Untagged
@@ -231,6 +232,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.017841186, y: 0.017841186, z: 0.04094565}
   m_Center: {x: 0, y: 0, z: 0.0003809929}
+--- !u!114 &2214866175707531483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149839588032086642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d8f020f5ffbf84eb9c761018b7b4e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1580148354082704084}
 --- !u!1 &7816558811301266735
 GameObject:
   m_ObjectHideFlags: 0

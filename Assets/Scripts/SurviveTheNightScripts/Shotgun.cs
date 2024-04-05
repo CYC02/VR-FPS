@@ -18,7 +18,8 @@ public class Shotgun : MonoBehaviour
 {
     [SerializeField] private Transform gunPoint;
     [SerializeField] private Transform foreend;
-    private bool IsActivated = false;
+    private bool IsActivated = false; //shotgun activation
+    private bool IsHoldingSlugAmmo = false;
     //private XRGrabInteractable grabInteractable;
     private InputInfo inputInfo;
 
@@ -105,6 +106,14 @@ public class Shotgun : MonoBehaviour
                         foreendCooldownTimer = foreendCooldownDuration;
                     }
                 }
+
+                /*
+                //when holding a bullet in left hand controller, highlight slug drop zone on shotgun
+                if (IsHoldingSlugAmmo) {
+                    
+                }
+                */
+
             }
             else
             {
@@ -199,33 +208,27 @@ public class Shotgun : MonoBehaviour
 
     //Event triggers this function which hides the mesh for the slug drop zone and registers that a slug is inside the drop zone
     public void OnSelectEnteredAmmoDropZone() {
-        MeshRenderer dropZoneMeshRender = slugDropZone.GetComponent<MeshRenderer>();
-        if (dropZoneMeshRender != null)
-        {
-            dropZoneMeshRender.enabled = false;
+        ShowSlugDropZoneMesh(false);
             
-            XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
-            if (dropZoneSocket != null)
-            {
-                IXRSelectInteractable interactable = dropZoneSocket.firstInteractableSelected;
-                if (interactable != null) {
-                    if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
-                    {
-                        slugAmmoLoadedInGun += 1;
-                        Destroy(interactable.transform.gameObject);
-                    }
-                    else {
-                        Debug.Log("Cannot load any slugs. Reached maximum slugs loaded into the gun");
-                    }
+        XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
+        if (dropZoneSocket != null)
+        {
+            IXRSelectInteractable interactable = dropZoneSocket.firstInteractableSelected;
+            if (interactable != null) {
+                if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
+                {
+                    slugAmmoLoadedInGun += 1;
+                    Destroy(interactable.transform.gameObject);
                 }
-            }
-            else {
-                Debug.LogError("Drop zone socket is null");
+                else {
+                    Debug.Log("Cannot load any slugs. Reached maximum slugs loaded into the gun");
+                }
             }
         }
         else {
-            Debug.LogError("Drop zone's mesh render is null");
+            Debug.LogError("Drop zone socket is null");
         }
+        
     }
 
     //Event triggers this function which checks if the shotgun is fully loaded, if it is fully loaded, the socket is not active
@@ -256,6 +259,18 @@ public class Shotgun : MonoBehaviour
         }
         else {
             Debug.LogError("The amount of loaded slug ammo should not be greater than the maximum.");
+        }
+    }
+
+    //Enable or disable the mesh of the slug drop zone
+    public void ShowSlugDropZoneMesh(bool on) {
+        MeshRenderer dropZoneMeshRender = slugDropZone.GetComponent<MeshRenderer>();
+        if (dropZoneMeshRender != null)
+        {
+            dropZoneMeshRender.enabled = on;
+        }
+        else {
+            Debug.LogError("Slug Drop Zone is null");
         }
     }
 }
