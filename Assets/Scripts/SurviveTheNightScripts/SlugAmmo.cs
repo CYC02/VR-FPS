@@ -21,9 +21,8 @@ public class SlugAmmo : MonoBehaviour
 
     private void OnSelectEntered(SelectEnterEventArgs args)
     {
-        // Handle the event when an interactor selects the object
         IXRSelectInteractor interactor = args.interactorObject;
-        Debug.Log("Object selected by interactor: " + interactor);
+        //Debug.Log("Object selected by interactor: " + interactor);
         GameObject shotgun = GameObject.FindWithTag("Shotgun");
         if (shotgun != null)
         {
