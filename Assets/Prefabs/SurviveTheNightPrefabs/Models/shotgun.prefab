@@ -103,8 +103,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702781331333264594}
+  - component: {fileID: 4301838530431994712}
   m_Layer: 12
-  m_Name: ShootingParticlesLocation
+  m_Name: MuzzleLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +126,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1845092099080730989}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!82 &4301838530431994712
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778377257286485588}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3328397437333748707
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +233,7 @@ GameObject:
   - component: {fileID: 3743470676742719127}
   - component: {fileID: 212146883258603497}
   - component: {fileID: 5213901517838941100}
+  - component: {fileID: 1238418570083377163}
   m_Layer: 0
   m_Name: Gun.001
   m_TagString: Untagged
@@ -209,6 +307,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1238418570083377163
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328397437333748707}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00913472, y: 0.0014165494, z: 0.00097440335}
+  m_Center: {x: 0.0037285835, y: 0.0016101961, z: -0.0004872019}
 --- !u!1 &4177163346662910111
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +940,7 @@ MonoBehaviour:
   extractedAmmoLocation: {fileID: 4921827317718432782}
   muzzleExplosion: {fileID: 5849061786321013072, guid: add53d0dce520044798ffe50c70ad927, type: 3}
   muzzleSmoke: {fileID: 6969531852756876121, guid: 2666c77c64decf24692a051bf681bbd4, type: 3}
+  muzzleLocation: {fileID: 0}
 --- !u!1 &7311951027316555173
 GameObject:
   m_ObjectHideFlags: 0
