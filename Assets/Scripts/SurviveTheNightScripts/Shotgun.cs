@@ -33,6 +33,12 @@ public class Shotgun : MonoBehaviour
     private int slugAmmoLoadedInGun = 0;
     [SerializeField] private int maxSlugAmmoLoadedInGun = 4;
 
+    [SerializeField] private GameObject extractedAmmoPrefab;
+    [SerializeField] private Transform extractedAmmoLocation;
+    private int usedSlugAmmoCaseInGun = 0;
+
+
+    private bool hasMadeAShot = false;
 
     // Start is called before the first frame update
 
@@ -70,13 +76,22 @@ public class Shotgun : MonoBehaviour
             //ensures that the shooting only occurs when activating/holding the shotgun
             if (IsActivated)
             {
-                if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
-                //if (device.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
+                if (hasMadeAShot == false)
                 {
-                    Debug.Log("Right trigger button pressed");
+                    if (inputInfo.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
+                    //if (device.TryGetFeatureValue(CommonUsages.triggerButton, out rightTriggerButtonDown) && rightTriggerButtonDown)
+                    {
+                        Debug.Log("Right trigger button pressed");
 
-                    Shoot();
-
+                        if (usedSlugAmmoCaseInGun == 0 && slugAmmoLoadedInGun > 0)
+                        {
+                            Shoot();
+                        }
+                        else
+                        {
+                            Debug.Log("Must extracted the used bullet casing in the gun before the player can shoot.");
+                        }
+                    }
                 }
             }
             //extracting bullet casing
@@ -101,18 +116,12 @@ public class Shotgun : MonoBehaviour
                             if (leftMag > 0.7f)
                             {
                                 SwitchForeendPosition(false);
+                                ExtractSlugAmmo();
                             }
                         }
                         foreendCooldownTimer = foreendCooldownDuration;
                     }
                 }
-
-                /*
-                //when holding a bullet in left hand controller, highlight slug drop zone on shotgun
-                if (IsHoldingSlugAmmo) {
-                    
-                }
-                */
 
             }
             else
@@ -163,6 +172,11 @@ public class Shotgun : MonoBehaviour
 
         //bottom shooting raycast line
         MakeShootingRaycast(gunPoint, bottomRayDirection, rayLengthOuter, outerDamage, Color.magenta);
+
+        //Make empty ammo casing
+        usedSlugAmmoCaseInGun++;
+
+        hasMadeAShot = true;
     }
 
     private void MakeShootingRaycast(Transform gunPoint, Vector3 rayDirection, float rayLength, int damage, Color c) {
@@ -195,6 +209,7 @@ public class Shotgun : MonoBehaviour
     }
 
     //Switched the foreend position on the gun in the up position or down
+    //If switched upwards, then extract bulltet casing
     private void SwitchForeendPosition(bool up) {
         if (up)
         {
@@ -204,6 +219,24 @@ public class Shotgun : MonoBehaviour
             foreend.localPosition = foreendDown;
         }
         isForeendUp= up;
+    }
+
+    //Instaniates extracted bullet casing when foreend is at the down position
+    private void ExtractSlugAmmo() {
+        if (usedSlugAmmoCaseInGun == 0)
+        {
+            //Debug.Log("No used slug ammo casing to extract");
+        }
+        else if (usedSlugAmmoCaseInGun == 1)
+        {
+            usedSlugAmmoCaseInGun -= 1;
+            slugAmmoLoadedInGun -= 1;
+            GameObject extractedAmmoInstance = Instantiate(extractedAmmoPrefab, extractedAmmoLocation.position, Quaternion.identity);
+            hasMadeAShot = false;
+        }
+        else {
+            Debug.LogError("Invalid number for usedSlugAmmoCaseInGun");
+        }
     }
 
     //Event triggers this function which hides the mesh for the slug drop zone and registers that a slug is inside the drop zone
