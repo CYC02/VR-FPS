@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2101881001633301585}
   - component: {fileID: 2920304200322847807}
   - component: {fileID: 3407218793417841160}
+  - component: {fileID: 3039122705250397569}
   m_Layer: 0
   m_Name: SlugAmmoExtractedCase
   m_TagString: Untagged
@@ -137,3 +138,15 @@ CapsuleCollider:
   m_Height: 0.022135768
   m_Direction: 1
   m_Center: {x: 1.0655311e-18, y: 2.6826857e-18, z: 0.00037755445}
+--- !u!114 &3039122705250397569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888639266415448375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e414ce60fca521c49b5ae6ac28ba50e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
