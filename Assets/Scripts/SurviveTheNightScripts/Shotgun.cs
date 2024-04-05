@@ -30,6 +30,7 @@ public class Shotgun : MonoBehaviour
 
     [SerializeField] private GameObject slugDropZone;
     private int slugAmmoLoadedInGun = 0;
+    [SerializeField] private int maxSlugAmmoLoadedInGun = 4;
 
 
     // Start is called before the first frame update
@@ -202,20 +203,59 @@ public class Shotgun : MonoBehaviour
         if (dropZoneMeshRender != null)
         {
             dropZoneMeshRender.enabled = false;
+            
+            XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
+            if (dropZoneSocket != null)
+            {
+                IXRSelectInteractable interactable = dropZoneSocket.firstInteractableSelected;
+                if (interactable != null) {
+                    if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
+                    {
+                        slugAmmoLoadedInGun += 1;
+                        Destroy(interactable.transform.gameObject);
+                    }
+                    else {
+                        Debug.Log("Cannot load any slugs. Reached maximum slugs loaded into the gun");
+                    }
+                }
+            }
+            else {
+                Debug.LogError("Drop zone socket is null");
+            }
         }
         else {
             Debug.LogError("Drop zone's mesh render is null");
         }
     }
-    public void OnSelectExitedAmmoDropZone() {
-        MeshRenderer dropZoneMeshRender = slugDropZone.GetComponent<MeshRenderer>();
-        if (dropZoneMeshRender != null)
+
+    //Event triggers this function which checks if the shotgun is fully loaded, if it is fully loaded, the socket is not active
+    public void OnHoverEnteredAmmoDropZone() {
+        XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
+        if (slugAmmoLoadedInGun == maxSlugAmmoLoadedInGun)
         {
-            dropZoneMeshRender.enabled = true;
+
+            if (dropZoneSocket != null)
+            {
+                dropZoneSocket.socketActive = false;
+            }
+            else
+            {
+                Debug.LogError("Drop zone socket is null");
+            }
         }
-        else
+        else if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
         {
-            Debug.LogError("Drop zone's mesh render is null");
+            if (dropZoneSocket != null)
+            {
+                dropZoneSocket.socketActive = true;
+            }
+            else
+            {
+                Debug.LogError("Drop zone socket is null");
+            }
+        }
+        else {
+            Debug.LogError("The amount of loaded slug ammo should not be greater than the maximum.");
         }
     }
 }
