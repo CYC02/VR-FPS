@@ -63,6 +63,37 @@ Transform:
   - {fileID: 7382894882851862085}
   m_Father: {fileID: 1845092099080730989}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1214047443743208916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4921827317718432782}
+  m_Layer: 12
+  m_Name: ExtractedAmmoLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4921827317718432782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214047443743208916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.143, y: 0.303, z: -0.161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1845092099080730989}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3328397437333748707
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 4177163346662910111}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: 0, w: 0}
-  m_LocalPosition: {x: -1.082, y: 0.47, z: 0.225}
+  m_LocalPosition: {x: -1.082, y: 0.47, z: 0.101}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -198,7 +229,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4177163346662910111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -258,7 +289,19 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2877713338160929013}
+        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
+        m_MethodName: OnHoverEnteredAmmoDropZone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
@@ -279,19 +322,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2877713338160929013}
-        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
-        m_MethodName: OnSelectExitedAmmoDropZone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -348,6 +379,7 @@ GameObject:
   - component: {fileID: 2763821781241677524}
   - component: {fileID: 1352896350606763959}
   - component: {fileID: 5074026701426235718}
+  - component: {fileID: 5177023185321469710}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -441,8 +473,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.030810554, y: 0.0013998308, z: 0.00097441504}
-  m_Center: {x: 0.0058817244, y: 0.003048512, z: -0.00048720435}
+  m_Size: {x: 0.031003987, y: 0.0014002605, z: 0.00097441504}
+  m_Center: {x: 0.0057850094, y: 0.0030482975, z: -0.00048720435}
 --- !u!65 &5074026701426235718
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -462,8 +494,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.011440824, y: 0.0031277966, z: 0.00097441504}
-  m_Center: {x: -0.015477881, y: 0.00019578153, z: -0.0004872059}
+  m_Size: {x: 0.011507708, y: 0.0038813173, z: 0.00097441504}
+  m_Center: {x: -0.01544444, y: 0.0005725419, z: -0.0004872059}
+--- !u!65 &5177023185321469710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292302569280565819}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008872935, y: 0.0011770305, z: 0.00097441504}
+  m_Center: {x: -0.0052327802, y: 0.0017678089, z: -0.00048720647}
 --- !u!1 &6382096678051959220
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +554,7 @@ Transform:
   - {fileID: 4563334489792270044}
   - {fileID: 3424686838869331921}
   - {fileID: 3811370789633428473}
+  - {fileID: 4921827317718432782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5857383944251969861
@@ -731,6 +785,8 @@ MonoBehaviour:
   foreend: {fileID: 3424686838869331921}
   slugDropZone: {fileID: 4177163346662910111}
   maxSlugAmmoLoadedInGun: 4
+  extractedAmmoPrefab: {fileID: 2888639266415448375, guid: aedec3bc9cef9664e8ad69babb6b82e0, type: 3}
+  extractedAmmoLocation: {fileID: 4921827317718432782}
 --- !u!1 &7311951027316555173
 GameObject:
   m_ObjectHideFlags: 0
