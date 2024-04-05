@@ -18,7 +18,8 @@ public class Shotgun : MonoBehaviour
 {
     [SerializeField] private Transform gunPoint;
     [SerializeField] private Transform foreend;
-    private bool IsActivated = false;
+    private bool IsActivated = false; //shotgun activation
+    private bool IsHoldingSlugAmmo = false;
     //private XRGrabInteractable grabInteractable;
     private InputInfo inputInfo;
 
@@ -27,6 +28,11 @@ public class Shotgun : MonoBehaviour
     private bool isForeendUp;
     private float foreendCooldownDuration = 0.2f;
     private float foreendCooldownTimer = 0f;
+
+    [SerializeField] private GameObject slugDropZone;
+    private int slugAmmoLoadedInGun = 0;
+    [SerializeField] private int maxSlugAmmoLoadedInGun = 4;
+
 
     // Start is called before the first frame update
 
@@ -72,8 +78,6 @@ public class Shotgun : MonoBehaviour
                     Shoot();
 
                 }
-
-
             }
             //extracting bullet casing
             //ensure left hand grip is true
@@ -86,25 +90,39 @@ public class Shotgun : MonoBehaviour
                     //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
                     float leftMag = leftVelocity.magnitude;
                     //Debug.Log(leftMag);
-                    if (foreendCooldownTimer == 0) { 
+                    if (foreendCooldownTimer == 0)
+                    {
                         if (isForeendUp != true && leftMag > 1.2f)
                         {
                             SwitchForeendPosition(true);
                         }
                         else
                         {
-                            if (leftMag > 0.7f) { 
+                            if (leftMag > 0.7f)
+                            {
                                 SwitchForeendPosition(false);
                             }
                         }
                         foreendCooldownTimer = foreendCooldownDuration;
                     }
                 }
+
+                /*
+                //when holding a bullet in left hand controller, highlight slug drop zone on shotgun
+                if (IsHoldingSlugAmmo) {
+                    
+                }
+                */
+
             }
-            else { 
-            
+            else
+            {
+                SwitchForeendPosition(false);
             }
-        }   
+        }
+        else { 
+            SwitchForeendPosition(false);
+        }
     }
 
     private void Shoot()
@@ -167,11 +185,16 @@ public class Shotgun : MonoBehaviour
         //Debug.DrawLine(rayStart, rayEndPoint, c);
     }
 
+    //Event triggers this function which determines if the Shotgun is activated(picked up) or deactivated (dropped from hand)
     public void OnIsActivated(bool activate) {
         IsActivated = activate;
         Debug.Log("Activate shotgun: " + activate);
+        if (!activate) {
+            SwitchForeendPosition(false);
+        }
     }
 
+    //Switched the foreend position on the gun in the up position or down
     private void SwitchForeendPosition(bool up) {
         if (up)
         {
@@ -183,4 +206,71 @@ public class Shotgun : MonoBehaviour
         isForeendUp= up;
     }
 
+    //Event triggers this function which hides the mesh for the slug drop zone and registers that a slug is inside the drop zone
+    public void OnSelectEnteredAmmoDropZone() {
+        ShowSlugDropZoneMesh(false);
+            
+        XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
+        if (dropZoneSocket != null)
+        {
+            IXRSelectInteractable interactable = dropZoneSocket.firstInteractableSelected;
+            if (interactable != null) {
+                if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
+                {
+                    slugAmmoLoadedInGun += 1;
+                    Destroy(interactable.transform.gameObject);
+                }
+                else {
+                    Debug.Log("Cannot load any slugs. Reached maximum slugs loaded into the gun");
+                }
+            }
+        }
+        else {
+            Debug.LogError("Drop zone socket is null");
+        }
+        
+    }
+
+    //Event triggers this function which checks if the shotgun is fully loaded, if it is fully loaded, the socket is not active
+    public void OnHoverEnteredAmmoDropZone() {
+        XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
+        if (slugAmmoLoadedInGun == maxSlugAmmoLoadedInGun)
+        {
+
+            if (dropZoneSocket != null)
+            {
+                dropZoneSocket.socketActive = false;
+            }
+            else
+            {
+                Debug.LogError("Drop zone socket is null");
+            }
+        }
+        else if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
+        {
+            if (dropZoneSocket != null)
+            {
+                dropZoneSocket.socketActive = true;
+            }
+            else
+            {
+                Debug.LogError("Drop zone socket is null");
+            }
+        }
+        else {
+            Debug.LogError("The amount of loaded slug ammo should not be greater than the maximum.");
+        }
+    }
+
+    //Enable or disable the mesh of the slug drop zone
+    public void ShowSlugDropZoneMesh(bool on) {
+        MeshRenderer dropZoneMeshRender = slugDropZone.GetComponent<MeshRenderer>();
+        if (dropZoneMeshRender != null)
+        {
+            dropZoneMeshRender.enabled = on;
+        }
+        else {
+            Debug.LogError("Slug Drop Zone is null");
+        }
+    }
 }

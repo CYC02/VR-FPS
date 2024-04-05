@@ -53,11 +53,11 @@ public class InputInfo : MonoBehaviour
         else {
             if (m_characteristics == InputDeviceCharacteristics.Left)
             {
-                Debug.Log("Left Controller not found");
+                //Debug.Log("Left Controller not found");
             }
             else
             {
-                Debug.Log("Right Controller not found");
+               // Debug.Log("Right Controller not found");
             }
         }
 
