@@ -39,7 +39,7 @@ public class Shotgun : MonoBehaviour
 
     [SerializeField] private ParticleSystem muzzleExplosion;
     [SerializeField] private ParticleSystem muzzleSmoke;
-    [SerializeField] private Transform particleEffectLocation;
+    [SerializeField] private Transform muzzleLocation;
 
     private bool isSelectedByLeftHand = false;
 
@@ -58,7 +58,6 @@ public class Shotgun : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         bool rightTriggerButtonDown = false;
@@ -140,6 +139,9 @@ public class Shotgun : MonoBehaviour
         }
     }
 
+    /*
+     * SHOTGUN ACTIVATION AND SHOOTING
+     */
     private void Shoot()
     {
         
@@ -181,7 +183,10 @@ public class Shotgun : MonoBehaviour
 
         //play particle effects
         PlayShootingParticleEffects();
-        
+
+        //play shooting audio
+        PlayShootingAudio();
+
         //Make empty ammo casing
         usedSlugAmmoCaseInGun++;
 
@@ -217,6 +222,10 @@ public class Shotgun : MonoBehaviour
         }
     }
 
+    /*
+     * CHECK AND CHECK IF SELECTING SHOTGUN WITH LEFT HAND DIRECT INTERACTOR
+     */
+
     //Function is called by the Left Hand Direct Interactor. Selected by left hand.
     public void OnSelectedWithLeftHand() {
         isSelectedByLeftHand= true;
@@ -228,12 +237,17 @@ public class Shotgun : MonoBehaviour
         isSelectedByLeftHand = false;
     }
 
+    /*
+     * FORE-END AND EXTRACTING AMMO
+     */
+
     //Switched the foreend position on the gun in the up position or down
     //If switched upwards, then extract bulltet casing
     private void SwitchForeendPosition(bool up) {
         if (up)
         {
             foreend.localPosition = foreendUp;
+            PlayForeEndAudio();
         }
         else {
             foreend.localPosition = foreendDown;
@@ -251,6 +265,7 @@ public class Shotgun : MonoBehaviour
         {
             usedSlugAmmoCaseInGun -= 1;
             slugAmmoLoadedInGun -= 1;
+            PlayLoadingAmmoAudio();
             GameObject extractedAmmoInstance = Instantiate(extractedAmmoPrefab, extractedAmmoLocation.position, Quaternion.identity);
             hasMadeAShot = false;
         }
@@ -258,6 +273,10 @@ public class Shotgun : MonoBehaviour
             Debug.LogError("Invalid number for usedSlugAmmoCaseInGun");
         }
     }
+
+    /*
+     * SLUG AMMO DROP ZONE
+     */
 
     //Event triggers this function which hides the mesh for the slug drop zone and registers that a slug is inside the drop zone
     public void OnSelectEnteredAmmoDropZone() {
@@ -271,6 +290,7 @@ public class Shotgun : MonoBehaviour
                 if (slugAmmoLoadedInGun < maxSlugAmmoLoadedInGun)
                 {
                     slugAmmoLoadedInGun += 1;
+                    PlayLoadingAmmoAudio();
                     Destroy(interactable.transform.gameObject);
                 }
                 else {
@@ -327,11 +347,44 @@ public class Shotgun : MonoBehaviour
         }
     }
 
+    /*
+     * SHOTGUN PARTICLE EFFECTS
+     */
+
     //Play Shooting particle effects
     private void PlayShootingParticleEffects() {
         if (muzzleExplosion != null && muzzleSmoke != null) {
-            Instantiate(muzzleExplosion, particleEffectLocation.position, Quaternion.identity);
-            Instantiate(muzzleSmoke, particleEffectLocation.position, Quaternion.identity);
+            Instantiate(muzzleExplosion, muzzleLocation.position, Quaternion.identity);
+            Instantiate(muzzleSmoke, muzzleLocation.position, Quaternion.identity);
+        }
+    }
+
+    /*
+     * SHOTGUN AUDIO
+     */
+
+    //Play Shooting audio
+    private void PlayShootingAudio() {
+        AudioSource audioSource = muzzleLocation.GetComponent<AudioSource>();
+        if (audioSource != null) { 
+            audioSource.Play();
+        }
+    }
+
+    //Play loading ammo audio
+    private void PlayLoadingAmmoAudio() { 
+        AudioSource audioSource = slugDropZone.GetComponent<AudioSource>();
+        if (audioSource != null) {
+            audioSource.Play();
+        }
+    }
+
+    //Play fore end audio when the fore end is in the up position
+    private void PlayForeEndAudio() {
+        AudioSource audioSource = foreend.GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 }
