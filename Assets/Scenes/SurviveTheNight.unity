@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 133097885}
   - component: {fileID: 133097887}
   - component: {fileID: 133097886}
+  - component: {fileID: 133097888}
   m_Layer: 0
   m_Name: Left Hand
   m_TagString: Untagged
@@ -577,6 +578,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_PhysicsTriggerInteraction: 1
+--- !u!114 &133097888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133097883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7d4b575e4c6564b8f1f50014fb478e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandDirectInteractor: {fileID: 133097887}
 --- !u!1 &311022083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1250,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2877713338160929013, guid: 7f8be4b2b80f99c43b2c0fcd0ad32ce6, type: 3}
+      propertyPath: particleEffectLocation
+      value: 
+      objectReference: {fileID: 1004951077}
     - target: {fileID: 6382096678051959220, guid: 7f8be4b2b80f99c43b2c0fcd0ad32ce6, type: 3}
       propertyPath: m_Name
       value: shotgun
@@ -1243,8 +1261,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3328397437333748707, guid: 7f8be4b2b80f99c43b2c0fcd0ad32ce6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2044163049}
   m_SourcePrefab: {fileID: 100100000, guid: 7f8be4b2b80f99c43b2c0fcd0ad32ce6, type: 3}
+--- !u!4 &1004951077 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 702781331333264594, guid: 7f8be4b2b80f99c43b2c0fcd0ad32ce6, type: 3}
+  m_PrefabInstance: {fileID: 1004951076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1101253273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2858,6 +2884,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_PhysicsTriggerInteraction: 1
+--- !u!1 &2044163045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3328397437333748707, guid: 7f8be4b2b80f99c43b2c0fcd0ad32ce6, type: 3}
+  m_PrefabInstance: {fileID: 1004951076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2044163049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044163045}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.00913472, y: 0.0014165494, z: 0.00097440335}
+  m_Center: {x: 0.0037285835, y: 0.0016101961, z: -0.0004872019}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

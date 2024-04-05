@@ -37,6 +37,12 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private Transform extractedAmmoLocation;
     private int usedSlugAmmoCaseInGun = 0;
 
+    [SerializeField] private ParticleSystem muzzleExplosion;
+    [SerializeField] private ParticleSystem muzzleSmoke;
+    [SerializeField] private Transform particleEffectLocation;
+
+    private bool isSelectedByLeftHand = false;
+
 
     private bool hasMadeAShot = false;
 
@@ -44,12 +50,12 @@ public class Shotgun : MonoBehaviour
 
     void Start()
     {
-        //grabInteractable = GetComponent<XRGrabInteractable>();
         inputInfo = GetComponent<InputInfo>();
 
         foreendUp = foreend.localPosition + foreend.forward * 0.1f;
         foreendDown = foreend.localPosition;
         isForeendUp= false;
+
     }
 
     // Update is called once per frame
@@ -105,9 +111,9 @@ public class Shotgun : MonoBehaviour
                     //if the velocity passes a certain velocity backwards, move the fore-end down to the original position
                     float leftMag = leftVelocity.magnitude;
                     //Debug.Log(leftMag);
-                    if (foreendCooldownTimer == 0)
+                    if (foreendCooldownTimer == 0 && isSelectedByLeftHand)
                     {
-                        if (isForeendUp != true && leftMag > 1.2f)
+                        if (isForeendUp != true && leftMag > 1f)
                         {
                             SwitchForeendPosition(true);
                         }
@@ -173,6 +179,9 @@ public class Shotgun : MonoBehaviour
         //bottom shooting raycast line
         MakeShootingRaycast(gunPoint, bottomRayDirection, rayLengthOuter, outerDamage, Color.magenta);
 
+        //play particle effects
+        PlayShootingParticleEffects();
+        
         //Make empty ammo casing
         usedSlugAmmoCaseInGun++;
 
@@ -206,6 +215,17 @@ public class Shotgun : MonoBehaviour
         if (!activate) {
             SwitchForeendPosition(false);
         }
+    }
+
+    //Function is called by the Left Hand Direct Interactor. Selected by left hand.
+    public void OnSelectedWithLeftHand() {
+        isSelectedByLeftHand= true;
+    }
+
+    //Function is called by the Left Hand Direct Interactor. Not selected by left hand.
+    public void OnSelectedExitedWithLeftHand()
+    {
+        isSelectedByLeftHand = false;
     }
 
     //Switched the foreend position on the gun in the up position or down
@@ -304,6 +324,14 @@ public class Shotgun : MonoBehaviour
         }
         else {
             Debug.LogError("Slug Drop Zone is null");
+        }
+    }
+
+    //Play Shooting particle effects
+    private void PlayShootingParticleEffects() {
+        if (muzzleExplosion != null && muzzleSmoke != null) {
+            Instantiate(muzzleExplosion, particleEffectLocation.position, Quaternion.identity);
+            Instantiate(muzzleSmoke, particleEffectLocation.position, Quaternion.identity);
         }
     }
 }
