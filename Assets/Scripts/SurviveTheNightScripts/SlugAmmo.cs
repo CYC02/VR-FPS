@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 /*
  * Author: Cindy Chan
- * 
+ * Includes event triggered functions that show or hide the slug drop zone
  */
 public class SlugAmmo : MonoBehaviour
 {
