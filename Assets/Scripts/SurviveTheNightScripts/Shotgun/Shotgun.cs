@@ -191,6 +191,12 @@ public class Shotgun : MonoBehaviour
         usedSlugAmmoCaseInGun++;
 
         hasMadeAShot = true;
+
+        //recoil
+        MakeRecoil(inputInfo.rightController);
+        if (isSelectedByLeftHand) {
+            MakeRecoil(inputInfo.leftController);
+        }
     }
 
     private void MakeShootingRaycast(Transform gunPoint, Vector3 rayDirection, float rayLength, int damage, Color c) {
@@ -385,6 +391,22 @@ public class Shotgun : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
+        }
+    }
+
+    /*
+     * SHOTGUN RECOIL/ DEVICE HAPTICS
+     */
+    private void MakeRecoil(InputDevice device) {
+        HapticCapabilities capabilities;
+        if (device.TryGetHapticCapabilities(out capabilities)) {
+            if (capabilities.supportsImpulse)
+            {
+                uint channel = 0;
+                float amplitude = 0.5f;
+                float duration = 1.0f;
+                device.SendHapticImpulse(channel, amplitude, duration);
+            }
         }
     }
 }
