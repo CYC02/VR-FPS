@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8482611044457072175}
   - component: {fileID: 8736934179546706704}
   - component: {fileID: 2456843646738155029}
-  - component: {fileID: 4204401481556690064}
+  - component: {fileID: 620772015077270069}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -239,7 +239,19 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 620772015077270069}
+        m_TargetAssemblyTypeName: j_weapon, Assembly-CSharp
+        m_MethodName: ShootWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -319,7 +331,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &4204401481556690064
+--- !u!114 &620772015077270069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
