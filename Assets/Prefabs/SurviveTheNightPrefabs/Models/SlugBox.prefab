@@ -241,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closedBox: {fileID: 2811761776018708369}
   openedBox: {fileID: 8553216312447417969}
+  interactable: {fileID: 747018601842616937}
+  slugAmmoPrefab: {fileID: 6149839588032086642, guid: 7ed91d82f80801443931ccb42c7293e5, type: 3}
 --- !u!54 &1836680652089790032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -311,7 +313,19 @@ MonoBehaviour:
       m_Calls: []
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7293494674818914644}
+        m_TargetAssemblyTypeName: SlugBox, Assembly-CSharp
+        m_MethodName: OnHoverExit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -341,7 +355,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7293494674818914644}
         m_TargetAssemblyTypeName: SlugBox, Assembly-CSharp
-        m_MethodName: SetActivationState
+        m_MethodName: OnActivate
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -353,19 +367,7 @@ MonoBehaviour:
         m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7293494674818914644}
-        m_TargetAssemblyTypeName: SlugBox, Assembly-CSharp
-        m_MethodName: SetActivationState
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
