@@ -13,7 +13,7 @@ public class j_spawn_ammo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnAmmoRandomly();
+        // SpawnAmmoRandomly();
     }
 
     // Update is called once per frame
@@ -34,15 +34,15 @@ public class j_spawn_ammo : MonoBehaviour
     {
         int randomizeNumber = Random.Range(0, 20);
         int chosenRandomNumber = Random.Range(0, 20);
-        Debug.Log(randomizeNumber);
-        Debug.Log(chosenRandomNumber);
+        // Debug.Log(randomizeNumber);
+        // Debug.Log(chosenRandomNumber);
 
         if (randomizeNumber == chosenRandomNumber)
         {
             var position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             Instantiate(ammoBox, position, Quaternion.identity);
             spawnedAmmo = true;
-            Debug.Log("Spawned");
+            // Debug.Log("Spawned");
         }
         else
         {
