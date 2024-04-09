@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnAmmoThroughWindow : MonoBehaviour
+public class j_weapon : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
