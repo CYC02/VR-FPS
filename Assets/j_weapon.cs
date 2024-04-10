@@ -7,10 +7,12 @@ public class j_weapon : MonoBehaviour
     public GameObject bullet;
     public Transform bullet_spawn_area;
 
+    float bullet_force = 8f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +24,8 @@ public class j_weapon : MonoBehaviour
     public void ShootWeapon()
     {
         var position = new Vector3(bullet_spawn_area.position.x, bullet_spawn_area.position.y, bullet_spawn_area.position.z);
-        Instantiate(bullet, position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().AddForce(0f,0f,1f, ForceMode.Impulse);
+        var b = Instantiate(bullet, position, Quaternion.identity);
+        var b_rigidbody = b.GetComponent<Rigidbody>();
+        b_rigidbody.AddForce(bullet_spawn_area.forward * bullet_force, ForceMode.Impulse);
     }  
 }
