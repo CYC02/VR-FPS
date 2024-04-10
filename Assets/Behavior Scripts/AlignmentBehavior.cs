@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behavior/Alignment")]
 public class Aligh : FlockBehavior
 {
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         //if no neighbors, return no adjustment
         if (context.Count == 0)
@@ -14,10 +14,10 @@ public class Aligh : FlockBehavior
         }
 
         //Add all points together and average
-        Vector2 alignmentMove = Vector2.zero;
+        Vector3 alignmentMove = Vector3.zero;
         foreach (Transform item in context)
         {
-            alignmentMove += (Vector2)item.transform.up;
+            alignmentMove += (Vector3)item.transform.up;
         }
         alignmentMove /= context.Count;
         
