@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CollectTheBounty.unity
+    guid: a6cee8379f04f47fb96d7b7a86c4bb10
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 63e22be0d576e2547b6554ded6aad586, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7ffef45bc39cf3747aa83c75abb1acf9, type: 2}
