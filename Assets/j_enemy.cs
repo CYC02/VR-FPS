@@ -28,6 +28,8 @@ public class j_enemy : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
+            Destroy(collision.gameObject);
             // Debug.Log("Attacked!");
         }
     }

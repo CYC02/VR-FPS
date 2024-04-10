@@ -12,8 +12,8 @@ public class j_weapon : MonoBehaviour
 
     float bullet_force = 8f;
 
-    int ammo_count = 5;
-    int max_ammo_count = 10;
+    int ammo_count = 10;
+    int max_ammo_count = 15;
 
     // Start is called before the first frame update
     void Start()
