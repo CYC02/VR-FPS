@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     [SerializeField] int health = 100;
     [SerializeField] int maxHealth = 100;
@@ -26,6 +27,14 @@ public class Character : MonoBehaviour
         if (health <= 0) { 
             //Death
             transform.gameObject.SetActive(false);
+        }
+        float currentHealth = health / maxHealth;
+        GameObject healthBar = GetComponentInChildren<HealthBar>().gameObject;
+        if (healthBar != null) {
+            Slider healthBarSlider = healthBar.GetComponentInChildren<Slider>();
+            if (healthBarSlider != null) {
+                healthBarSlider.value = currentHealth;
+            }
         }
     }
 
