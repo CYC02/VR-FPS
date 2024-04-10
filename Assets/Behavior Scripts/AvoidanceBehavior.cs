@@ -5,23 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behavior/Avoidance")]
 public class AvoidanceBehavior : FlockBehavior
 {
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         //if no neighbors, return no adjustment
         if (context.Count == 0)
         {
-            return Vector2.zero;
+            return Vector3.zero;
         }
 
         //Add all points together and average
-        Vector2 avoidanceMove = Vector2.zero;
+        Vector3 avoidanceMove = Vector3.zero;
         int nAvoid = 0;
         foreach (Transform item in context)
         {
-            if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
+            if (Vector3.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
             {
                 nAvoid++;
-                avoidanceMove += (Vector2)(agent.transform.position - item.position);
+                avoidanceMove += (Vector3)(agent.transform.position - item.position);
             }
             
         }
