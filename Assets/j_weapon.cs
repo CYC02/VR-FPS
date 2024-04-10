@@ -8,31 +8,42 @@ public class j_weapon : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bullet_spawn_area;
-
     public XRSocketInteractor ammo_socket;
 
     float bullet_force = 8f;
 
-    int ammo_count = 0;
+    int ammo_count = 5;
+    int max_ammo_count = 10;
 
     // Start is called before the first frame update
     void Start()
     {
         ammo_socket.onSelectEntered.AddListener(LoadWeapon);
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    // public void FullWeapon(XRBaseInteractable ammo)
+    // {
+
+    //     // if (ammo_count == max_ammo_count)
+    //     // {
+
+    //     // }
+    // }
 
     public void LoadWeapon(XRBaseInteractable ammo)
     {
-        ammo_count += 1;
-        
-        Destroy(ammo.gameObject);
-        Debug.Log(ammo_count);
+        if (ammo_count != max_ammo_count)
+        {
+            ammo_count += 1;
+            Destroy(ammo.gameObject);
+        }
     }
 
     public void ShootWeapon()
