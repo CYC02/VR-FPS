@@ -17,6 +17,7 @@ public class GoToPlayerState : State
 
         if (nearPlayer.isBobbyNear)
         {
+            //when the friendly agent is close enough, they stop near player
             navMeshAgent.isStopped = true;
             character.transform.LookAt(fieldView.player.transform);
             ResetAnimationTrigger("Run");
@@ -25,6 +26,7 @@ public class GoToPlayerState : State
         else {
             //friendly agent runs towards the player and stands near them
             SetAnimationTrigger("Run");
+            navMeshAgent.isStopped = false;
             navMeshAgent.destination = fieldView.player.transform.position;
             return this;
         }
