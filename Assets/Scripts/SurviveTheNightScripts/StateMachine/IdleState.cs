@@ -14,43 +14,49 @@ public class IdleState : State
 
     public GoToPlayerState goToPlayerState;
     public AttackState attackState;
+    public WanderState wanderState;
 
     public override State RunCurrentState()
-    {   
+    {
+        SetAnimationTrigger("Idle");
 
         if (fieldView.canSeePlayer)
         {
             if (character.CompareTag("Friendly"))
             {
-                if (character.layer == LayerMask.NameToLayer("Bobby")) {
-                    if (nearPlayer.isBobbyNear) {
-                        SetAnimationTrigger("Idle");
+                if (character.layer == LayerMask.NameToLayer("Bobby"))
+                {
+                    if (nearPlayer.isBobbyNear)
+                    {
                         return this;
                     }
-                    else{
+                    else
+                    {
                         ResetAnimationTrigger("Idle");
                         return goToPlayerState;
                     }
                 }
-                else{
+                else
+                {
 
                     return this;
                 }
-                
+
             }
             else if (character.CompareTag("Enemy"))
             {
                 ResetAnimationTrigger("Idle");
                 return attackState;
             }
-            else {
+            else
+            {
                 return this;
             }
-            
+
         }
-
-
-
-        return this;
+        else {
+            ResetAnimationTrigger("Idle");
+            return wanderState;
+        }
     }
 }
