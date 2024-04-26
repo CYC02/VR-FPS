@@ -12,19 +12,31 @@ using UnityEngine;
 public class IdleState : State
 {
 
-    public StayNearPlayerState nearPlayerState;
+    public GoToPlayerState goToPlayerState;
     public AttackState attackState;
 
-    public bool canSeeThePlayer;
-
     public override State RunCurrentState()
-    {
-        if (canSeeThePlayer)
+    {   
+
+        if (fieldView.canSeePlayer)
         {
             if (character.CompareTag("Friendly"))
             {
-                ResetAnimationTrigger("Idle");
-                return nearPlayerState;
+                if (character.layer == LayerMask.NameToLayer("Bobby")) {
+                    if (nearPlayer.isBobbyNear) {
+                        SetAnimationTrigger("Idle");
+                        return this;
+                    }
+                    else{
+                        ResetAnimationTrigger("Idle");
+                        return goToPlayerState;
+                    }
+                }
+                else{
+
+                    return this;
+                }
+                
             }
             else if (character.CompareTag("Enemy"))
             {
@@ -37,15 +49,7 @@ public class IdleState : State
             
         }
 
-        // Play Idle Animation
-        if (!startIdleAnimation) {
-            if (anim != null) {
-                SetAnimationTrigger("Idle");
-            }
-            else {
-                Debug.LogWarning("Bobby's first child should have the Animator component!");
-            }
-        }
+
 
         return this;
     }
