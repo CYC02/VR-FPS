@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR;
 /*
  * Author: Cindy Chan
  * This is the Idle state for the character.
@@ -15,6 +15,7 @@ public class IdleState : State
     public GoToPlayerState goToPlayerState;
     public AttackState attackState;
     public WanderState wanderState;
+    public CommunicateWithPlayerState commState;
 
     public override State RunCurrentState()
     {
@@ -28,6 +29,16 @@ public class IdleState : State
                 {
                     if (nearPlayer.isBobbyNear)
                     {
+                        //is player trying to communicate with Bobby?
+                        //is player gazing at Bobby?
+                        BobbyGazeEvent bobbyGaze = character.GetComponent<BobbyGazeEvent>();
+                        if (bobbyGaze != null) {
+                            if (bobbyGaze.isHovered) {
+                                ResetAnimationTrigger("Idle");
+                                return commState;
+                            }
+                        }
+
                         return this;
                     }
                     else
@@ -38,7 +49,6 @@ public class IdleState : State
                 }
                 else
                 {
-
                     return this;
                 }
 
