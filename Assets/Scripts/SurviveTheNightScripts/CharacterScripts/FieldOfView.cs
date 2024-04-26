@@ -19,9 +19,13 @@ public class FieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Start()
+    {
         StartCoroutine(FOVRoutine());
     }
 
