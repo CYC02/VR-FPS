@@ -16,6 +16,7 @@ public class IdleState : State
     public AttackState attackState;
     public WanderState wanderState;
     public CommunicateWithPlayerState commState;
+    public AlertState alertState;
 
     public override State RunCurrentState()
     {
@@ -31,14 +32,17 @@ public class IdleState : State
                     {
                         //is player trying to communicate with Bobby?
                         //is player gazing at Bobby?
-                        BobbyGazeEvent bobbyGaze = character.GetComponent<BobbyGazeEvent>();
+                        //BobbyGazeEvent bobbyGaze = character.GetComponent<BobbyGazeEvent>();
                         if (bobbyGaze != null) {
-                            if (bobbyGaze.isHovered) {
-                                ResetAnimationTrigger("Idle");
+                            ResetAnimationTrigger("Idle");
+                            if (bobbyGaze.isHovered)
+                            {
                                 return commState;
                             }
+                            else {
+                                return alertState;
+                            }
                         }
-
                         return this;
                     }
                     else
