@@ -7,6 +7,7 @@ public class AlertState : State
     public IdleState idleState;
     public override State RunCurrentState()
     {
+        SetAnimationTrigger("Idle");
         return this;
     }
 }

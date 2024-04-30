@@ -32,11 +32,11 @@ public class IdleState : State
                     {
                         //is player trying to communicate with Bobby?
                         //is player gazing at Bobby?
-                        //BobbyGazeEvent bobbyGaze = character.GetComponent<BobbyGazeEvent>();
                         if (bobbyGaze != null) {
-                            ResetAnimationTrigger("Idle");
+                            
                             if (bobbyGaze.isHovered)
                             {
+                                ResetAnimationTrigger("Idle");
                                 return commState;
                             }
                             else {
