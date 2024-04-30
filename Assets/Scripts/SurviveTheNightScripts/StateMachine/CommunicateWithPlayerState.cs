@@ -12,45 +12,23 @@ public class CommunicateWithPlayerState : State
 {
     public IdleState idleState;
 
-    /*
-    public float noLookWaitTime = 10f;
-    private float lastNoLookWaitTime;
-
-    public float holdWaitTime = 3f;
-    private float lastHoldTime;
-    */
-
-    public float notHoverDuration = 3f;
-    private float notHoverTimer = 0f;
-
     public override State RunCurrentState()
     {
         SetAnimationTrigger("Idle");
         //player gaze is true and switched to this state
         if (bobbyGaze != null)
         {
-            notHoverDuration += Time.deltaTime;
-
-            if (bobbyGaze.isHovered == false)
-            {
-                if (notHoverTimer >= notHoverDuration)
-                {
-                    //player is not looking at Bobby for a certain amount of time
-                    ResetAnimationTrigger("ExtendLeftHand");
-                    SetAnimationTrigger("RetractLeftHand");
-
-                    Debug.Log("NOTHOVERING");
-                }
+            if (bobbyGaze.isHovered) {
+                ResetAnimationTrigger("RetractLeftHand");
+                SetAnimationTrigger("ExtendLeftHand");
             }
             else
             {
-                notHoverTimer = 0f;
-                ResetAnimationTrigger("Idle");
-                SetAnimationTrigger("ExtendLeftHand");
-                Debug.Log("HOVERING");
+                ResetAnimationTrigger("ExtendLeftHand");
+                SetAnimationTrigger("RetractLeftHand");
             }
-
         }
         return this;
+
     }
 }
