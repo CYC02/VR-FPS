@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Undefined
+  - Friendly
+  - Neutral
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -12,19 +16,19 @@ TagManager:
   - Water
   - UI
   - post processing
+  - Target
+  - Obstruction
+  - Bobby
+  - 
+  - 
+  - Grab
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
   - 
   - 
   - 
