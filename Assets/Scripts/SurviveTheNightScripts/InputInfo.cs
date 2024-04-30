@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 //source reference: https://www.youtube.com/watch?v=d2X-2nR_6WY
 //source reference: https://www.youtube.com/watch?v=Kh_94glqO-0
@@ -16,6 +17,12 @@ public class InputInfo : MonoBehaviour
     public InputDevice rightController;
     public InputDevice leftController;
     public InputDevice headMountDisplay;
+
+    public XRDirectInteractor leftControllerInteractor;
+    public XRDirectInteractor rightControllerInteractor;
+
+    private GameObject player;
+
     private enum ControllerSide 
     {
         Left_Controller,
@@ -38,6 +45,10 @@ public class InputInfo : MonoBehaviour
         {
             m_characteristics = InputDeviceCharacteristics.Right;
         }
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        leftControllerInteractor = player.transform.GetChild(0).GetChild(1).GetComponent<XRDirectInteractor>();
+        rightControllerInteractor = player.transform.GetChild(0).GetChild(2).GetComponent<XRDirectInteractor>();
     }
 
     // Update is called once per frame
@@ -106,5 +117,13 @@ public class InputInfo : MonoBehaviour
         if (devices.Count > 0) { 
             inputDevice= devices[0];
         }
+    }
+
+    public XRDirectInteractor GetLeftXRDirectInteractor() {
+        return leftControllerInteractor;
+    }
+
+    public XRDirectInteractor GetRightXRDirectInteractor() {
+        return rightControllerInteractor;
     }
 }
