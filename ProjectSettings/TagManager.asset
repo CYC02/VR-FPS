@@ -3,11 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Shotgun
-  - Neutral
-  - Friendly
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -15,20 +11,20 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - Post Processing
-  - 
-  - 
-  - 
-  - 
-  - Grab
+  - post processing
   - 
   - 
   - 
   - 
   - 
   - 
-  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

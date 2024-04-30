@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,11 @@ public class SlugBox : MonoBehaviour
     [SerializeField] private XRGrabInteractable interactable;
     [SerializeField] private GameObject slugAmmoPrefab;
     private bool isOpened = false;
-
+    [SerializeField] private int maxAmmoInBox = 12;
+    private int ammoInBox;  
     private void Start()
     {
-        //interactable.hoverExited.AddListener(OnHoverExit);
+        ammoInBox = maxAmmoInBox;
     }
 
     //Switch from closed box to opened box
@@ -32,23 +34,14 @@ public class SlugBox : MonoBehaviour
         {
             OpenBox();
         }
-    }
-
-    //Hover exit event triggers this function put a slug in the hand
-    public void OnHoverExit(HoverExitEventArgs args) {
-        IXRHoverInteractor interactor = args.interactorObject;
-        Debug.Log("Hovering: " + interactor);
-        XRDirectInteractor directInteractor= interactor as XRDirectInteractor;
         if (isOpened) {
-            //hand has ammo
-            /*
-            if (directInteractor != null) {
-                GameObject ammoInstance = Instantiate(slugAmmoPrefab);
-                if (ammoInstance) {
-                    directInteractor.firstInteractableSelected = ammoInstance;
-                }
+            Vector3 offsetPos = new Vector3(0,0,0.1f);
+            Instantiate(slugAmmoPrefab, transform.position + offsetPos, Quaternion.identity);
+            ammoInBox -= 1;
+            if (ammoInBox == 0) {
+                Destroy(gameObject);
             }
-            */
         }
     }
+
 }

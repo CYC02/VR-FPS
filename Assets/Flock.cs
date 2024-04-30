@@ -52,7 +52,7 @@ public class Flock : MonoBehaviour
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
             );
-            // newAgent.transform.position = new Vector3(newAgent.transform.position.x, 0f, newAgent.transform.position.y); // Ensure agents are positioned along the floor
+            newAgent.transform.position = new Vector3(newAgent.transform.position.x, 10, newAgent.transform.position.y); // Ensure agents are positioned along the floor
             // newAgent.center = transform.position;
             newAgent.name = "Agent " + i;
             agents.Add(newAgent);
@@ -83,8 +83,8 @@ public class Flock : MonoBehaviour
     {
         List<Transform> context = new List<Transform>();
         //If in 3D, Collider3D Physics overlap sphere...
-        Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighborRadius);
-        foreach(Collider2D c in contextColliders)
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighborRadius);
+        foreach(Collider c in contextColliders)
         {
             if (c != agent.AgentCollider)
             {
