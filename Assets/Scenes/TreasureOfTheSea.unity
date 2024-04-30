@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 318161709}
   - component: {fileID: 318161712}
   - component: {fileID: 318161710}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Post Processing layer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
