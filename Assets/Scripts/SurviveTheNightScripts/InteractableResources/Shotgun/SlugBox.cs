@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
  * Author: Cindy Chan
  * This script is used for making the box open and give the player ammo.
  */
-public class SlugBox : MonoBehaviour
+public class SlugBox : InteractableResource
 {
     [SerializeField] private GameObject closedBox;
     [SerializeField] private GameObject openedBox;

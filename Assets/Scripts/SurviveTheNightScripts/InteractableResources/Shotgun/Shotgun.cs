@@ -14,7 +14,7 @@ using UnityEngine.XR.Interaction.Toolkit;
  * This script manages the shotgun's shooting and other functionality.
  */
 [RequireComponent(typeof(InputInfo))]
-public class Shotgun : MonoBehaviour
+public class Shotgun : InteractableResource
 {
     [SerializeField] private Transform gunPoint;
     [SerializeField] private Transform foreend;

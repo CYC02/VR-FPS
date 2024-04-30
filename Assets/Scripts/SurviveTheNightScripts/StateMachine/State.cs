@@ -22,6 +22,7 @@ public abstract class State : MonoBehaviour
     protected Collider characterCollider;
     protected NearPlayer nearPlayer;
     protected InputInfo inputInfo;
+    protected BobbyGazeEvent bobbyGaze;
     private void Start()
     {
         character = transform.parent.parent.gameObject;
@@ -31,6 +32,7 @@ public abstract class State : MonoBehaviour
         characterCollider = character.GetComponent<Collider>();
         nearPlayer = fieldView.player.GetComponentInChildren<NearPlayer>();
         inputInfo = character.GetComponent<InputInfo>();
+        bobbyGaze = character.GetComponent<BobbyGazeEvent>();
     }
 
     public abstract State RunCurrentState();
