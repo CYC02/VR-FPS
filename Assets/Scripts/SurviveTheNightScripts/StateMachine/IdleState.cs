@@ -40,6 +40,8 @@ public class IdleState : State
                                 return commState;
                             }
                             else {
+                                ResetAnimationTrigger("ExtendLeftHand");
+                                ResetAnimationTrigger("RetractLeftHand");
                                 return alertState;
                             }
                         }

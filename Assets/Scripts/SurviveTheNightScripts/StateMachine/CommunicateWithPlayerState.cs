@@ -19,9 +19,8 @@ public class CommunicateWithPlayerState : State
 
     public override State RunCurrentState()
     {
-        SetAnimationTrigger("Idle");
 
-        if (!bobbyGaze.isHovered && startedTimer == false) {
+        if (bobbyGaze.isHovered == false && startedTimer == false) {
             timer = 0;
             startedTimer = true;
         }
@@ -36,8 +35,10 @@ public class CommunicateWithPlayerState : State
                 timer += Time.deltaTime;
                 if (timer >= noLookDuration)
                 {
-                    ResetAnimationTrigger("ExtendLeftHand");
+                    
                     SetAnimationTrigger("RetractLeftHand");
+                    startedTimer= false;
+                    timer = 0f;
                     return idleState;
                 }
             }
