@@ -12,12 +12,46 @@ public class CommunicateWithPlayerState : State
 {
     public IdleState idleState;
 
+
+    [SerializeField] private float noLookDuration = 3f;
+    private float timer = 0;
+    private bool startedTimer = false;
+
     public override State RunCurrentState()
     {
         SetAnimationTrigger("Idle");
+
+        if (!bobbyGaze.isHovered && startedTimer == false) {
+            timer = 0;
+            startedTimer = true;
+        }
+        if (startedTimer)
+        {
+            if (bobbyGaze.isHovered)
+            {
+                startedTimer = false;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+                if (timer >= noLookDuration)
+                {
+                    ResetAnimationTrigger("ExtendLeftHand");
+                    SetAnimationTrigger("RetractLeftHand");
+                    return idleState;
+                }
+            }
+        }
+        else {
+            SetAnimationTrigger("ExtendLeftHand");
+        }
+
+        return this;
         //player gaze is true and switched to this state
+        /*
         if (bobbyGaze != null)
         {
+
             if (bobbyGaze.isHovered) {
                 ResetAnimationTrigger("RetractLeftHand");
                 SetAnimationTrigger("ExtendLeftHand");
@@ -28,6 +62,7 @@ public class CommunicateWithPlayerState : State
                 SetAnimationTrigger("RetractLeftHand");
             }
         }
+        */
         return this;
 
     }
