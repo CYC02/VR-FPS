@@ -5,7 +5,8 @@ using UnityEngine;
 /*
  * Author: Cindy Chan
  * This is a state that only Bobby can switched to.
- * Only switched to this state when Bobby is near the player and the player's gaze triggers the hover
+ * Only switched to this state when Bobby is near the player and the player's gaze triggers the hover.
+ * Bobby extends his arm and the player can interact with the sockets in his hands.
  */
 
 public class CommunicateWithPlayerState : State
@@ -35,7 +36,7 @@ public class CommunicateWithPlayerState : State
                 timer += Time.deltaTime;
                 if (timer >= noLookDuration)
                 {
-                    
+                    // after not looking at Bobby, go back to idle state
                     SetAnimationTrigger("RetractLeftHand");
                     startedTimer= false;
                     timer = 0f;
@@ -44,26 +45,11 @@ public class CommunicateWithPlayerState : State
             }
         }
         else {
+            // looking at Bobby
             SetAnimationTrigger("ExtendLeftHand");
-        }
 
-        return this;
-        //player gaze is true and switched to this state
-        /*
-        if (bobbyGaze != null)
-        {
-
-            if (bobbyGaze.isHovered) {
-                ResetAnimationTrigger("RetractLeftHand");
-                SetAnimationTrigger("ExtendLeftHand");
-            }
-            else
-            {
-                ResetAnimationTrigger("ExtendLeftHand");
-                SetAnimationTrigger("RetractLeftHand");
-            }
         }
-        */
+        SetAnimationTrigger("RetractLeftHand");
         return this;
 
     }
