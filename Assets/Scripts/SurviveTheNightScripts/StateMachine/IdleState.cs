@@ -40,10 +40,12 @@ public class IdleState : State
                                 return commState;
                             }
                             else {
+                                ResetAnimationTrigger("ExtendLeftHand");
+                                ResetAnimationTrigger("RetractLeftHand");
                                 return alertState;
                             }
                         }
-                        return this;
+                        //return this;
                     }
                     else
                     {
@@ -51,10 +53,12 @@ public class IdleState : State
                         return goToPlayerState;
                     }
                 }
+                /*
                 else
                 {
                     return this;
                 }
+                */
 
             }
             else if (character.CompareTag("Enemy"))
@@ -62,15 +66,17 @@ public class IdleState : State
                 ResetAnimationTrigger("Idle");
                 return attackState;
             }
+            /*
             else
             {
                 return this;
-            }
+            }*/
 
         }
         else {
             ResetAnimationTrigger("Idle");
             return wanderState;
         }
+        return this;
     }
 }

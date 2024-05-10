@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4015192347901311532}
   - component: {fileID: 6064198737974863253}
   - component: {fileID: 1816557246395628384}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: slugBoxClosed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 9135821161722425491}
   - component: {fileID: 5962571424173336987}
   - component: {fileID: 4353057389814609687}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: slugBoxClosed.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,8 @@ GameObject:
   - component: {fileID: 7293494674818914644}
   - component: {fileID: 1836680652089790032}
   - component: {fileID: 747018601842616937}
-  m_Layer: 0
+  - component: {fileID: 4979121624203079229}
+  m_Layer: 12
   m_Name: SlugBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,10 +240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180c2d08b121bc04dbc8cd694e92d865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropSound: {fileID: 0}
   closedBox: {fileID: 2811761776018708369}
   openedBox: {fileID: 8553216312447417969}
   interactable: {fileID: 747018601842616937}
   slugAmmoPrefab: {fileID: 6149839588032086642, guid: 7ed91d82f80801443931ccb42c7293e5, type: 3}
+  maxAmmoInBox: 12
 --- !u!54 &1836680652089790032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -290,7 +293,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 128
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -432,6 +435,102 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!82 &4979121624203079229
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725004615922457219}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2811761776018708369
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +543,7 @@ GameObject:
   - component: {fileID: 2103616271255004850}
   - component: {fileID: 7605078486880907854}
   - component: {fileID: 3674447735333971236}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: slugBoxClosed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +648,7 @@ GameObject:
   - component: {fileID: 2748041996337482940}
   - component: {fileID: 1692859405408338895}
   - component: {fileID: 4907554965583577070}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SlugAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633229571318336144}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SlugBoxOpened
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5372947508461134019}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

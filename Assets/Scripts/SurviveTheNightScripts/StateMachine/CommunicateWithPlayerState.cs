@@ -5,29 +5,58 @@ using UnityEngine;
 /*
  * Author: Cindy Chan
  * This is a state that only Bobby can switched to.
- * Only switched to this state when Bobby is near the player and the player's gaze triggers the hover
+ * Only switched to this state when Bobby is near the player and the player's gaze triggers the hover.
+ * Bobby extends his arm and the player can interact with the sockets in his hands.
  */
 
 public class CommunicateWithPlayerState : State
 {
     public IdleState idleState;
 
+
+    // The time it takes for the player to not look at Bobby before switches back to the idle state
+    [SerializeField] private float noLookDuration = 3f;
+
+    // The time it takes for the player to point at something to register what Bobby has to do depending on what was pointed at
+    //[SerializeField] private float lookPointingFingerDuration = 5f;
+    
+    // Timer to keep track how long the player is not looking at Bobby 
+    private float timer = 0;
+    // Bool to see if the timer is not looking at Bobby had started or not
+    private bool startedTimer = false;
+
     public override State RunCurrentState()
     {
-        SetAnimationTrigger("Idle");
-        //player gaze is true and switched to this state
-        if (bobbyGaze != null)
+
+        if (bobbyGaze.isHovered == false && startedTimer == false) {
+            timer = 0;
+            startedTimer = true;
+        }
+        if (startedTimer)
         {
-            if (bobbyGaze.isHovered) {
-                ResetAnimationTrigger("RetractLeftHand");
-                SetAnimationTrigger("ExtendLeftHand");
+            if (bobbyGaze.isHovered)
+            {
+                startedTimer = false;
             }
             else
             {
-                ResetAnimationTrigger("ExtendLeftHand");
-                SetAnimationTrigger("RetractLeftHand");
+                timer += Time.deltaTime;
+                if (timer >= noLookDuration)
+                {
+                    // after not looking at Bobby, go back to idle state
+                    SetAnimationTrigger("RetractLeftHand");
+                    startedTimer= false;
+                    timer = 0f;
+                    return idleState;
+                }
             }
         }
+        else {
+            // looking at Bobby
+            SetAnimationTrigger("ExtendLeftHand");
+
+        }
+        //SetAnimationTrigger("RetractLeftHand");
         return this;
 
     }

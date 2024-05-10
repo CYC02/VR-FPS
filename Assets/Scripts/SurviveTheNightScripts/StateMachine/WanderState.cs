@@ -32,6 +32,7 @@ public class WanderState : State
 
                 if (RandomPoint(character.transform.position, range, out point)) {
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    navMeshAgent.isStopped = false;
                     navMeshAgent.destination = point;
                 }
             }
