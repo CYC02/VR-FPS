@@ -14,8 +14,15 @@ public class CommunicateWithPlayerState : State
     public IdleState idleState;
 
 
+    // The time it takes for the player to not look at Bobby before switches back to the idle state
     [SerializeField] private float noLookDuration = 3f;
+
+    // The time it takes for the player to point at something to register what Bobby has to do depending on what was pointed at
+    //[SerializeField] private float lookPointingFingerDuration = 5f;
+    
+    // Timer to keep track how long the player is not looking at Bobby 
     private float timer = 0;
+    // Bool to see if the timer is not looking at Bobby had started or not
     private bool startedTimer = false;
 
     public override State RunCurrentState()
@@ -49,7 +56,7 @@ public class CommunicateWithPlayerState : State
             SetAnimationTrigger("ExtendLeftHand");
 
         }
-        SetAnimationTrigger("RetractLeftHand");
+        //SetAnimationTrigger("RetractLeftHand");
         return this;
 
     }

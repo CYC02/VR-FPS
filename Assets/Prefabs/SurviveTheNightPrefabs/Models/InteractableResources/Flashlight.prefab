@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7214511333887450774}
   - component: {fileID: 8587331221341452362}
   - component: {fileID: 1481885718629616543}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 476471085065703995}
   - component: {fileID: 2970843936001996015}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7290806016043826851}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Attach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,6 +647,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ee64ade2b3b199c4789459e15db16678, type: 3}
       propertyPath: m_Name
       value: flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee64ade2b3b199c4789459e15db16678, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

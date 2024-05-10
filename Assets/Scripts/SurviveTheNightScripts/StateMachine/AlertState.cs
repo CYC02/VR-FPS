@@ -27,7 +27,7 @@ public class AlertState : State
 
         if (nearPlayer.isBobbyNear && bobbyGaze.isHovered) {
             ResetAnimationTrigger("Idle");
-            //character.transform.LookAt(transform.position);
+            character.transform.LookAt(fieldView.player.transform);
             return commState;
         }
 
