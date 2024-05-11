@@ -18,18 +18,26 @@ public class BobbyStorage : MonoBehaviour
     {
     }
 
-    public void AddItemToBackpage(GameObject itemToAdd) {
+    // When Bobby is getting resources, Bobby can store the items in the backpack storage.
+    // Can only call this function if Bobby is wearing the backpack
+    public void AddItemToBackpack(GameObject itemToAdd) {
         if (itemToAdd)
         {
-            if (amountInBackpack < maxBackpackStorage)
+            if (isWearingBackpack)
             {
-                items.Add(itemToAdd);
-                amountInBackpack++;
+                if (amountInBackpack < maxBackpackStorage)
+                {
+                    items.Add(itemToAdd);
+                    amountInBackpack++;
+                }
+                else
+                {
+                    Debug.Log("Backpack is full. Cannot add anymore items.");
+                }
             }
             else {
-                Debug.Log("Backpack is full. Cannot add anymore items.");
+                Debug.LogError("Cannot add item to backpack if Bobby is not wearing it.");
             }
-
         }
         else {
             Debug.LogError("itemToAdd is null");

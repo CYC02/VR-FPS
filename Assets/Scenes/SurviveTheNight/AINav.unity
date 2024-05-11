@@ -4465,9 +4465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d28bec85a868d419cc1314077a4687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleState: {fileID: 712890869}
   commState: {fileID: 2096159267}
   turnTime: 5
+  playerLookingDuration: 5
 --- !u!1 &1797124632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4794,7 +4794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb7761dc0dfdf246a4ac16d8dc5e676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleState: {fileID: 712890869}
+  alertState: {fileID: 1791106963}
   noLookDuration: 3
 --- !u!4 &2096159268
 Transform:
