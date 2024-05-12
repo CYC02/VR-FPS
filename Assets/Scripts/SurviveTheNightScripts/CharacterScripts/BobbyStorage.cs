@@ -67,10 +67,12 @@ public class BobbyStorage : MonoBehaviour
 
         if (dropItem.transform.childCount > 0)
         {
+            Debug.Log("drop item from bag");
             amountInBackpack--;
             GameObject firstItemInBag = dropItem.transform.GetChild(0).gameObject;
             firstItemInBag.SetActive(true);
             firstItemInBag.GetComponent<Rigidbody>().isKinematic = false;
+            firstItemInBag.transform.SetParent(null);
         }
         else {
             Debug.LogWarning("Nothing to drop from the backpack");
