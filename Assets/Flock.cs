@@ -62,8 +62,13 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(FlockAgent agent in agents)
+        for (int i = 0; i < agents.Count; i++)
         {
+            FlockAgent agent = agents[i];
+            if (agent == null) {
+                agents.RemoveAt(i);
+            }
+
             List<Transform> context = GetNearbyObjects(agent);
 
             //For demo only
