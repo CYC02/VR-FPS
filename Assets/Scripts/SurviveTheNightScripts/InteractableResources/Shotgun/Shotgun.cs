@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -271,6 +272,8 @@ public class Shotgun : InteractableResource
         {
             usedSlugAmmoCaseInGun -= 1;
             slugAmmoLoadedInGun -= 1;
+            XRSocketInteractor dropZoneSocket = slugDropZone.GetComponent<XRSocketInteractor>();
+            dropZoneSocket.socketActive= true;
             PlayLoadingAmmoAudio();
             GameObject extractedAmmoInstance = Instantiate(extractedAmmoPrefab, extractedAmmoLocation.position, Quaternion.identity);
             hasMadeAShot = false;
