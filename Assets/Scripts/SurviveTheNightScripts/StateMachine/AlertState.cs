@@ -30,10 +30,13 @@ public class AlertState : State
             character.transform.Rotate(Vector3.up, 45f);
         }
 
+        //reset and start the timer that keeps track of whether the player starts looking at Bobby
         if (bobbyGaze.isHovered == true && isPlayerLooking == false) {
             playerLookingTimer = 0f;
             isPlayerLooking= true;
         }
+
+        //checking if the player is continuous looking at Bobby for a certain duration of time
         if (isPlayerLooking) {
             if (bobbyGaze.isHovered) {
                 playerLookingTimer += Time.deltaTime;
@@ -48,6 +51,7 @@ public class AlertState : State
                     }
                 }
             }
+            //player stopped looking a Bobby before the timer reaches the playerLookingDuration value
             else{
                 isPlayerLooking= false;
             }
