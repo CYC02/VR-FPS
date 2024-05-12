@@ -20,7 +20,7 @@ public class WanderState : State
     public override State RunCurrentState()
     {
         SetAnimationTrigger("Walk");
-        if (!fieldView.canSeePlayer)
+        if (!fieldView.canSeeTarget)
         {
             if (Time.time > lastUsedTime + cooldownTime) { 
                 lastUsedTime= Time.time;

@@ -22,7 +22,7 @@ public class IdleState : State
     {
         SetAnimationTrigger("Idle");
 
-        if (fieldView.canSeePlayer)
+        if (fieldView.canSeeTarget)
         {
             if (character.CompareTag("Friendly"))
             {
