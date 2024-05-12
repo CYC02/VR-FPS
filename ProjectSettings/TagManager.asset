@@ -8,6 +8,7 @@ TagManager:
   - Friendly
   - Neutral
   - Enemy
+  - Shotgun
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - post processing
-  - Target
+  - Player
   - Obstruction
   - Bobby
   - 

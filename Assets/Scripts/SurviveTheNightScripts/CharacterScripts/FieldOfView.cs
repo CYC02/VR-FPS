@@ -14,10 +14,21 @@ public class FieldOfView : MonoBehaviour
 
     public GameObject player;
 
-    public LayerMask targetMask;
+    //public LayerMask targetMask;
+    public LayerMask playerMask;
+    public LayerMask alliesMask;
     public LayerMask obstructionMask;
+    public LayerMask resourceMask;
 
-    public bool canSeePlayer;
+    public bool canSeeTarget;
+
+    public enum Target {
+        Player,
+        Allies,
+        Resource
+    }
+
+    public Target currentTarget;
 
     private void Awake()
     {
@@ -39,19 +50,37 @@ public class FieldOfView : MonoBehaviour
         {
             yield return wait;
 
-            FieldOfViewCheck();
+            LayerMask targetMask;
+
+            switch (currentTarget)
+            {
+                case Target.Player:
+                    targetMask = playerMask;
+                    break;
+                case Target.Allies:
+                    targetMask = alliesMask;
+                    break;
+                case Target.Resource:
+                    targetMask = resourceMask;
+                    break;
+                default:
+                    targetMask = playerMask;
+                    break;
+            }
+
+            FieldOfViewCheck(targetMask);
 
         }
     }
 
     // Looking for player
-    private void FieldOfViewCheck() {
+    private void FieldOfViewCheck(LayerMask targetMask) {
         // searching objects only on targetMask
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
         if (rangeChecks.Length != 0)
         {
-            //found an object on the target mask (only player on target mask)
+            //found an object on the target mask
 
             Transform target = rangeChecks[0].transform;
 
@@ -64,24 +93,24 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     //if we are not hitting out obstruction mask, then we can see the target
-                    canSeePlayer = true;
+                    canSeeTarget = true;
                 }
                 else
                 {
-                    canSeePlayer = false;
+                    canSeeTarget = false;
                 }
             }
             else
             {
                 //not within fov
-                canSeePlayer = false;
+                canSeeTarget = false;
             }
         }
         else {
-            //ensure canSeePlayer is set to false is if the player was previously within view
-            //but player is no longer in view
-            if (canSeePlayer) {
-                canSeePlayer= false;
+            //ensure canSeeTarget is set to false is if the player was previously within view
+            //but target is no longer in view
+            if (canSeeTarget) {
+                canSeeTarget= false;
             }
         }
     }

@@ -34,6 +34,7 @@ public class CommunicateWithPlayerState : State
         if (playerClickGetResourcesButton) {
             playerClickGetResourcesButton = false;
             SetAnimationTrigger("RetractLeftHand");
+            SetAnimationTrigger("Idle");
             startedTimer = false;
             timer = 0f;
             bobbyUI.SetActive(false);
