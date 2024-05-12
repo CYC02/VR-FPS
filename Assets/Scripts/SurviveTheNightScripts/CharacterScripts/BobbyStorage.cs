@@ -8,14 +8,19 @@ using UnityEngine;
  */
 public class BobbyStorage : MonoBehaviour
 {
-    [SerializeField] int maxBackpackStorage = 10;
+    [SerializeField] private int maxBackpackStorage = 10;
     private int amountInBackpack = 0;
-    List<GameObject> items;
-    GameObject objectInLeftHand;
-    GameObject objectInRightHand;
+    //private List<GameObject> items;
+    //public GameObject objectInLeftHand;
+    //public GameObject objectInRightHand;
     private bool isWearingBackpack = false;
+    public GameObject backpack;
+    private GameObject dropItem;
     private void Start()
     {
+        //items = new List<GameObject>();
+        backpack = GameObject.FindWithTag("Backpack");
+        dropItem = backpack.transform.GetChild(1).gameObject;
     }
 
     // When Bobby is getting resources, Bobby can store the items in the backpack storage.
@@ -27,8 +32,21 @@ public class BobbyStorage : MonoBehaviour
             {
                 if (amountInBackpack < maxBackpackStorage)
                 {
-                    items.Add(itemToAdd);
+                    //items.Add(itemToAdd);
                     amountInBackpack++;
+                    if (backpack != null)
+                    {
+                        Rigidbody rb = itemToAdd.GetComponent<Rigidbody>();
+                        rb.isKinematic = true;
+
+                        //GameObject dropItem = backpack.transform.GetChild(2).gameObject;
+                        itemToAdd.transform.SetParent(dropItem.transform);
+
+                        itemToAdd.SetActive(false);
+                    }
+                    else {
+                        Debug.LogError("backpack is null");
+                    }
                 }
                 else
                 {
@@ -45,8 +63,24 @@ public class BobbyStorage : MonoBehaviour
 
     }
 
+    public void DropItemFromBackpack() {
+
+        if (dropItem.transform.childCount > 0)
+        {
+            amountInBackpack--;
+            GameObject firstItemInBag = dropItem.transform.GetChild(0).gameObject;
+            firstItemInBag.SetActive(true);
+            firstItemInBag.GetComponent<Rigidbody>().isKinematic = false;
+        }
+        else {
+            Debug.LogWarning("Nothing to drop from the backpack");
+        }
+    }
+
     //function is trigger from the select event of the Backpack socket interactor
     public void WearingBackpack(bool isWearing) {
         isWearingBackpack = isWearing;
     }
+
+    public bool IsWearingBackpack() { return isWearingBackpack; }
 }

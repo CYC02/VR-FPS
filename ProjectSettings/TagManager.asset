@@ -9,6 +9,7 @@ TagManager:
   - Neutral
   - Enemy
   - Shotgun
+  - Backpack
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Obstruction
   - Bobby
   - 
-  - 
+  - Resource
   - Grab
   - 
   - 

@@ -18,6 +18,16 @@ public class GetResourcesState : State
         ResetAnimationTrigger("ExtendLeftHand");
         SetAnimationTrigger("Walk");
         navMeshAgent.isStopped= false;
+
+        if (character.CompareTag("Friendly"))
+        {
+            if (character.layer == LayerMask.NameToLayer("Bobby"))
+            {
+                //collect resource into storage
+                fieldView.currentTarget = FieldOfView.Target.Resource;
+            }
+        }
+
         if (!fieldView.canSeeTarget)
         {
             if (Time.time > lastUsedTime + cooldownTime)
@@ -49,14 +59,7 @@ public class GetResourcesState : State
         }
         else {
             //can see target and go to target.
-            if (character.CompareTag("Friendly"))
-            {
-                if (character.layer == LayerMask.NameToLayer("Bobby"))
-                {
-                    //ResetAnimationTrigger("Walk");
-                    //collect resource into storage
-                }
-            }
+            fieldView.GetTargetTransform().position = navMeshAgent.destination;
         }
 
         return this;

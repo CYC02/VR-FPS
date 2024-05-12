@@ -19,8 +19,11 @@ public class FieldOfView : MonoBehaviour
     public LayerMask alliesMask;
     public LayerMask obstructionMask;
     public LayerMask resourceMask;
+    private LayerMask targetMask;
 
     public bool canSeeTarget;
+
+    private Transform target;
 
     public enum Target {
         Player,
@@ -49,8 +52,6 @@ public class FieldOfView : MonoBehaviour
         while (true)
         {
             yield return wait;
-
-            LayerMask targetMask;
 
             switch (currentTarget)
             {
@@ -82,7 +83,7 @@ public class FieldOfView : MonoBehaviour
         {
             //found an object on the target mask
 
-            Transform target = rangeChecks[0].transform;
+            target = rangeChecks[0].transform;
 
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
@@ -114,4 +115,6 @@ public class FieldOfView : MonoBehaviour
             }
         }
     }
+
+    public Transform GetTargetTransform() { return target; }
 }

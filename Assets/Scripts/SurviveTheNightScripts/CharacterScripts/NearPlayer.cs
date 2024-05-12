@@ -16,6 +16,13 @@ public class NearPlayer : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Bobby")) {
             isBobbyNear = true;
         }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Grab")) {
+            NearResource nearResource = collider.gameObject.GetComponentInChildren<NearResource>();
+            if (nearResource != null)
+            {
+                nearResource.nearPlayer = true;
+            }
+        }
     }
 
     void OnTriggerExit(Collider collider)
@@ -23,6 +30,14 @@ public class NearPlayer : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("Bobby"))
         {
             isBobbyNear = false;
+        }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Grab"))
+        {
+            NearResource nearResource = collider.gameObject.GetComponentInChildren<NearResource>();
+            if (nearResource != null)
+            {
+                nearResource.nearPlayer = false;
+            }
         }
     }
 }
