@@ -6,6 +6,8 @@ public class GetResourcesState : State
 {
     public override State RunCurrentState()
     {
+        ResetAnimationTrigger("RetractLeftHand");
+        ResetAnimationTrigger("ExtendLeftHand");
         return this;
     }
 }

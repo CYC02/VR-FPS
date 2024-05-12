@@ -18,6 +18,8 @@ public class AlertState : State
     [SerializeField] private float playerLookingDuration = 5f;
     public override State RunCurrentState()
     {
+        ResetAnimationTrigger("RetractLeftHand");
+        ResetAnimationTrigger("ExtendLeftHand");
         SetAnimationTrigger("Idle");
         
         turnTimer += Time.deltaTime;
