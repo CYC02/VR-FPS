@@ -12,6 +12,7 @@ public class GetResourcesState : State
     public float cooldownTime = 3f;
     private float lastUsedTime;
     public BobbyStorage bobbyStorage;
+    public GoToPlayerState goToPlayerState;
     public override State RunCurrentState()
     {
         ResetAnimationTrigger("RetractLeftHand");
@@ -26,6 +27,12 @@ public class GetResourcesState : State
                 //collect resource into storage
                 fieldView.currentTarget = FieldOfView.Target.Resource;
             }
+        }
+
+        if (bobbyStorage.isBackpackFull) {
+            fieldView.currentTarget= FieldOfView.Target.Player;
+            ResetAnimationTrigger("Walk");
+            return goToPlayerState;
         }
 
         if (!fieldView.canSeeTarget)
@@ -59,7 +66,7 @@ public class GetResourcesState : State
         }
         else {
             //can see target and go to target.
-            fieldView.GetTargetTransform().position = navMeshAgent.destination;
+            navMeshAgent.destination = fieldView.GetTargetTransform().position;
         }
 
         return this;

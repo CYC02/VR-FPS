@@ -770,6 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 3
   bobbyStorage: {fileID: 1238968103}
+  goToPlayerState: {fileID: 1493523614}
 --- !u!1 &360744708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1263,7 @@ MonoBehaviour:
   m_AllowHoverHapticsWhileSelecting: 1
   m_LineType: 0
   m_BlendVisualLinePoints: 1
-  m_MaxRaycastDistance: 15
+  m_MaxRaycastDistance: 3
   m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
@@ -4341,9 +4342,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04bd5d46e7b29f419473c221b137e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBackpackStorage: 10
+  maxBackpackStorage: 2
+  amountInBackpack: 0
   backpack: {fileID: 1096212908}
   getResourceButton: {fileID: 1124031998}
+  isBackpackFull: 0
 --- !u!1 &1277364180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,7 +4357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1277364181}
   - component: {fileID: 1277364183}
-  - component: {fileID: 1277364182}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: Untagged
@@ -4377,14 +4379,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2142506695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1277364182
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277364180}
-  m_Enabled: 1
 --- !u!20 &1277364183
 Camera:
   m_ObjectHideFlags: 0
@@ -5638,7 +5632,7 @@ MonoBehaviour:
   m_AllowHoverHapticsWhileSelecting: 1
   m_LineType: 0
   m_BlendVisualLinePoints: 1
-  m_MaxRaycastDistance: 15
+  m_MaxRaycastDistance: 3
   m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
@@ -6330,7 +6324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commState: {fileID: 2096159267}
   turnTime: 5
-  playerLookingDuration: 5
+  playerLookingDuration: 2
 --- !u!1 &1797124632
 GameObject:
   m_ObjectHideFlags: 0
@@ -8417,7 +8411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405822105371552833, guid: 4d8dc2681e1e6374c8b52af877505d18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.936
+      value: 3.65
       objectReference: {fileID: 0}
     - target: {fileID: 7405822105371552833, guid: 4d8dc2681e1e6374c8b52af877505d18, type: 3}
       propertyPath: m_LocalPosition.y
