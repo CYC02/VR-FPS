@@ -8,6 +8,6 @@ public class BulletDestructor : MonoBehaviour
     private void OnCollisionEnter(Collision collisionInfo)
     {
         Destroy(gameObject);
-        enemy.takeDamage(50);
+        enemy.takeDamage(20);
     }
 }

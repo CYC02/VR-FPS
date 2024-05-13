@@ -8,6 +8,8 @@ TagManager:
   - Friendly
   - Neutral
   - Enemy
+  - Shotgun
+  - Backpack
   layers:
   - Default
   - TransparentFX
@@ -16,11 +18,11 @@ TagManager:
   - Water
   - UI
   - post processing
-  - Target
+  - Player
   - Obstruction
   - Bobby
   - 
-  - 
+  - Resource
   - Grab
   - 
   - 

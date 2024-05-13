@@ -22,7 +22,7 @@ public class IdleState : State
     {
         SetAnimationTrigger("Idle");
 
-        if (fieldView.canSeePlayer)
+        if (fieldView.canSeeTarget)
         {
             if (character.CompareTag("Friendly"))
             {
@@ -45,7 +45,6 @@ public class IdleState : State
                                 return alertState;
                             }
                         }
-                        //return this;
                     }
                     else
                     {
@@ -53,12 +52,6 @@ public class IdleState : State
                         return goToPlayerState;
                     }
                 }
-                /*
-                else
-                {
-                    return this;
-                }
-                */
 
             }
             else if (character.CompareTag("Enemy"))
@@ -66,11 +59,6 @@ public class IdleState : State
                 ResetAnimationTrigger("Idle");
                 return attackState;
             }
-            /*
-            else
-            {
-                return this;
-            }*/
 
         }
         else {

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.meta.xr.simulator": "file:C:/Users/blueb/Downloads/meta_xr_simulator_v64/meta_xr_simulator_v64.tgz",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.development": "1.0.1",
