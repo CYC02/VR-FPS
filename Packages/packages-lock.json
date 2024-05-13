@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.meta.xr.simulator": {
-      "version": "file:C:/Users/blueb/Downloads/meta_xr_simulator_v62/meta_xr_simulator_v62.tgz",
-      "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {}
-    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
