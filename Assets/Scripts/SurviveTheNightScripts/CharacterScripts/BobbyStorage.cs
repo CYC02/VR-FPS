@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Author: Cindy Chan
@@ -16,6 +17,8 @@ public class BobbyStorage : MonoBehaviour
     private bool isWearingBackpack = false;
     public GameObject backpack;
     private GameObject dropItem;
+    public GameObject getResourceButton;
+
     private void Start()
     {
         //items = new List<GameObject>();
@@ -82,6 +85,9 @@ public class BobbyStorage : MonoBehaviour
     //function is trigger from the select event of the Backpack socket interactor
     public void WearingBackpack(bool isWearing) {
         isWearingBackpack = isWearing;
+        if (getResourceButton) {
+            getResourceButton.GetComponent<Button>().interactable = isWearing;
+        }
     }
 
     public bool IsWearingBackpack() { return isWearingBackpack; }
