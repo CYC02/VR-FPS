@@ -189,8 +189,9 @@ MonoBehaviour:
   maxHealth: 100
   isDead: 0
   healthBar: {fileID: 5543532424430722744}
-  damage: 10
+  damage: 5
   attackSound: {fileID: 3153723440965406858}
+  isNearPlayer: 0
 --- !u!114 &2337775264328100078
 MonoBehaviour:
   m_ObjectHideFlags: 0

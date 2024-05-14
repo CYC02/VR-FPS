@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public WinLoseScreen screen;
     protected override void Awake()
     {
         base.Awake();
@@ -18,5 +19,8 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
+        if (health == 0) {
+            screen.ShowLoseScreen();
+        }
     }
 }
