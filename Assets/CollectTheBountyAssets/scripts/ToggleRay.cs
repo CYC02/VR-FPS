@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+
+// SOURCE: FROM CREATE WITH VR UNITY LEARN
+
 /// <summary>
 /// Toggle between the direct and ray interactor if the direct interactor isn't touching any objects
 /// Should be placed on a ray interactor
