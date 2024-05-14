@@ -28,6 +28,11 @@ public class j_enemy : MonoBehaviour
     void Update()
     {
         moose.destination = player.position;
+
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     mooseAnim.SetBool("moose_walk", true);
+        // }
     }
 
     void OnCollisionEnter(Collision collision)

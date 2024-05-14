@@ -135,8 +135,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 488852410880542792}
   - {fileID: 8125525030825466460}
+  - {fileID: 5183467214781130737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &7976324507837992062
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  mooseModel: {fileID: 973639544690742002}
+  mooseModel: {fileID: 5522696665734708555}
 --- !u!195 &392058059435167911
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1001 &90768876838432675
+--- !u!1001 &4640368473725517850
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -444,26 +444,26 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: da52f8f123b4a4977bd1b8c40e7ca2f7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7883758747867710372}
+      addedObject: {fileID: 5635669904672644276}
   m_SourcePrefab: {fileID: 100100000, guid: da52f8f123b4a4977bd1b8c40e7ca2f7, type: 3}
---- !u!4 &488852410880542792 stripped
+--- !u!4 &5183467214781130737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da52f8f123b4a4977bd1b8c40e7ca2f7, type: 3}
-  m_PrefabInstance: {fileID: 90768876838432675}
+  m_PrefabInstance: {fileID: 4640368473725517850}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &973639544690742002 stripped
+--- !u!1 &5522696665734708555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: da52f8f123b4a4977bd1b8c40e7ca2f7, type: 3}
-  m_PrefabInstance: {fileID: 90768876838432675}
+  m_PrefabInstance: {fileID: 4640368473725517850}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7883758747867710372
+--- !u!95 &5635669904672644276
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973639544690742002}
+  m_GameObject: {fileID: 5522696665734708555}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8258dcf57ef134bdd8b88b5ae8d59000, type: 2}
