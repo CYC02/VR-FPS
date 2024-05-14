@@ -9,12 +9,13 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    Enemy enemy;
+    public Enemy enemy;
     public DeathState deathState;
     public Player playerHealth;
+    public float cooldownTime = 3f;
+    private float lastUsedTime;
     private void Awake()
     {
-        enemy= GetComponent<Enemy>();
     }
 
     public override State RunCurrentState()
@@ -22,18 +23,28 @@ public class AttackState : State
         if (enemy != null)
         {
             //if dead play death animation and disappear.death state
-            if (enemy.isDead) {
+            if (enemy.isDead)
+            {
                 ResetAnimationTrigger("Gallop");
                 ResetAnimationTrigger("Idle");
                 ResetAnimationTrigger("Attack");
-                if (playerHealth != null)
-                {
-                    playerHealth.TakeDamage(enemy.damage);
-                }
-                else {
-                    Debug.LogError("player script is missing from the player gameobject in XR origin");
-                }
+                ResetAnimationTrigger("Idle");
                 return deathState;
+            }
+            else {
+                if (Time.time > lastUsedTime + cooldownTime) {
+                    lastUsedTime = Time.time;
+
+                    if (playerHealth != null)
+                    {
+                        playerHealth.TakeDamage(enemy.damage);
+                    }
+                    else
+                    {
+                        Debug.LogError("player script is missing from the player gameobject in XR origin");
+                    }
+                }
+
             }
         }
         else {
