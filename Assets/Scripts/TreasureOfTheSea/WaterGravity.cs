@@ -6,6 +6,6 @@ public class WaterGravity : MonoBehaviour
 {
     void Start()
     {
-        Physics.gravity = new Vector3(0, -1f, 0);
+        Physics.gravity = new Vector3(0, -0.5f, 0);
     }
 }

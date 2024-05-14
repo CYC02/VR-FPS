@@ -44,12 +44,12 @@ public class FlockUnit : MonoBehaviour
         var obstacleVector = CalculateObstacleVector() * assignedFlock.obstacleWeight;
 
         var moveVector = cohesionVector + avoidanceVector + aligementVector + boundsVector + obstacleVector;
-        moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
-        moveVector = moveVector.normalized * speed;
-        if (moveVector == Vector3.zero)
-            moveVector = transform.forward;
 
-        myTransform.forward = moveVector;
+        // Smoothly adjust the forward direction of the unit
+        myTransform.forward = Vector3.SmoothDamp(myTransform.forward, moveVector.normalized, ref currentVelocity, smoothDamp);
+
+        // Move the unit forward with the adjusted direction and speed
+        myTransform.position += myTransform.forward * speed * Time.deltaTime;
     }
 
     private void FindNeighbors()
