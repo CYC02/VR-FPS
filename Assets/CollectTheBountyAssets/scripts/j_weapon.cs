@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.UI;
 
 public class j_weapon : MonoBehaviour
 {
@@ -10,40 +11,26 @@ public class j_weapon : MonoBehaviour
     public Transform bullet_spawn_area;
     public XRSocketInteractor ammo_socket;
 
+
     float bullet_force = 8f;
 
     int ammo_count = 10;
-    int max_ammo_count = 15;
 
     // Start is called before the first frame update
     void Start()
     {
         ammo_socket.onSelectEntered.AddListener(LoadWeapon);
- 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
-
-    // public void FullWeapon(XRBaseInteractable ammo)
-    // {
-
-    //     // if (ammo_count == max_ammo_count)
-    //     // {
-
-    //     // }
-    // }
-
     public void LoadWeapon(XRBaseInteractable ammo)
     {
-        if (ammo_count != max_ammo_count)
-        {
-            ammo_count += 1;
-            Destroy(ammo.gameObject);
-        }
+        ammo_count += 1;
+        Destroy(ammo.gameObject);
     }
 
     public void ShootWeapon()
@@ -58,4 +45,5 @@ public class j_weapon : MonoBehaviour
         }
 
     }  
+
 }

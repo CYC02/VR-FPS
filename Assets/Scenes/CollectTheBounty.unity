@@ -1666,6 +1666,66 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &515481620
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.714735
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03999996
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.21493
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.41947913
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.907765
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -229.603
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      propertyPath: m_Name
+      value: Adventurer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1520887219}
+  m_SourcePrefab: {fileID: 100100000, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
 --- !u!1001 &544296538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5024,6 +5084,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6038af1df00c46f884ea4e6ca95da85, type: 3}
+--- !u!1 &1520887218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+  m_PrefabInstance: {fileID: 515481620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1520887219
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520887218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ffcaa9cb439be487099ece9c71c2671b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1556275303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8395011388356296673, guid: c49e2ba3eba674cd792d9fdf663e219f, type: 3}
@@ -6965,13 +7051,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You can teleport on the streets.
+  m_text: 'You can teleport on the street.
 
     Load your gun first.
 
 
-    Kill
-    the moose. Good luck.'
+    Kill the
+    moose. Good luck.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7338,7 +7424,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3514469403162754388, guid: ba0557acb528e4a7083fb988326e9495, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.41
+      value: 24.38
       objectReference: {fileID: 0}
     - target: {fileID: 3514469403162754388, guid: ba0557acb528e4a7083fb988326e9495, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7392,6 +7478,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1243435026}
+    - target: {fileID: 8931098264269682068, guid: ba0557acb528e4a7083fb988326e9495, type: 3}
+      propertyPath: mooseModel
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: da52f8f123b4a4977bd1b8c40e7ca2f7, type: 3}
     m_RemovedComponents:
     - {fileID: 7657541292482784327, guid: ba0557acb528e4a7083fb988326e9495, type: 3}
     m_RemovedGameObjects: []
@@ -7471,3 +7561,4 @@ SceneRoots:
   - {fileID: 1367663744}
   - {fileID: 2056254314}
   - {fileID: 1392365149}
+  - {fileID: 515481620}

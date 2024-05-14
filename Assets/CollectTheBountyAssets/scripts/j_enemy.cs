@@ -8,7 +8,7 @@ public class j_enemy : MonoBehaviour
     public Transform player;
     private NavMeshAgent moose;
     public GameObject mooseModel;
-    Animator mooseAnim;
+    public Animator mooseAnim;
 
     int health = 100;
     int damage = 10;
@@ -20,24 +20,32 @@ public class j_enemy : MonoBehaviour
     void Start()
     {
         moose = GetComponent<NavMeshAgent>();
-        mooseAnim = mooseModel.GetComponent<Animator>();
-        mooseAnim.SetBool("moose_walk", true);
+        mooseAnim = GetComponentInChildren<Animator>();
+        mooseAnim.SetFloat("moose_speed", 1);
+        // Debug.Log(moose.speed);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         moose.destination = player.position;
+        // Debug.Log(moose.remainingDistance);
 
-        // if (Input.GetKeyDown(KeyCode.Q))
-        // {
-        //     mooseAnim.SetBool("moose_walk", true);
-        // }
+        if (moose.remainingDistance < 2)
+        {
+            mooseAnim.SetFloat("moose_speed", 0);
+        }
+        else
+        {
+            mooseAnim.SetFloat("moose_speed", 1);
+        }
+
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        // Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Bullet(Clone)")
         {
             health -= damage;
@@ -47,7 +55,11 @@ public class j_enemy : MonoBehaviour
             }
 
             Destroy(collision.gameObject);
-            // Debug.Log("Attacked!");
         }
+    }
+
+    public void activateEnemy()
+    {
+        gameObject.SetActive(true);
     }
 }
