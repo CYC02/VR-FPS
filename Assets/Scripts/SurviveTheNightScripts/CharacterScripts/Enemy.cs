@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Character
 {
     public int damage = 10;
+    public AudioSource attackSound;
     // Start is called before the first frame update
     protected override void Start()
     {

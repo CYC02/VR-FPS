@@ -38,6 +38,9 @@ public class AttackState : State
                     if (playerHealth != null)
                     {
                         playerHealth.TakeDamage(enemy.damage);
+                        if (enemy.attackSound) {
+                            enemy.attackSound.Play();
+                        }
                     }
                     else
                     {
