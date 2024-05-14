@@ -1,3 +1,24 @@
+/**
+ * MICHAEL CALLE
+ * VR Project
+ */
+
+/**
+ * HERE IS A LIST OF YOUTUBE TUTORIALS I GOT INSPIRATION FROM:
+ * 
+ * Bullet and gun mechanic:
+ * https://www.youtube.com/watch?v=EwiUomzehKU&ab_channel=Unity3DSchool
+ * 
+ * Flocking behavior:
+ * https://www.youtube.com/watch?v=mjKINQigAE4&list=PL5KbKbJ6Gf99UlyIqzV1UpOzseyRn5H1d&ab_channel=BoardToBitsGames
+ * 
+ * Grabbing with the VR hands:
+ * https://www.youtube.com/watch?v=FyhNnbZR28I&ab_channel=MuddyWolf
+ * 
+ * NOTE: These tutorials only laid a foundation. The 2D flocking techniques had to be rebuilt into a 3D world space as well
+ * as making it compatible with the destruction of individual agents from the bullets.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +47,6 @@ public class Flock : MonoBehaviour
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
-    // Start is called before the first frame update
     void Start()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
@@ -35,31 +55,20 @@ public class Flock : MonoBehaviour
 
         for (int i = 0; i < startingCount; i++)
         {
-            // Calculate a random position in a circle on the XY plane (flat floor)
-            // float angle = Random.Range(0f, Mathf.PI * 2f); // Random angle in radians
-            // float radius = Mathf.Sqrt(Random.Range(0f, 1f)) * startingCount * AgentDensity; // Random radius within the circle
-            // Vector3 circlePosition = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * radius;
-            
-            // FlockAgent newAgent = Instantiate (
-            //     agentPrefab,
-            //     circlePosition,
-            //     Quaternion.Euler(Vector3.up * Random.Range(0f, 360f)),
-            //     transform
-            // );
             FlockAgent newAgent = Instantiate (
                 agentPrefab,
                 Random.insideUnitCircle * startingCount * AgentDensity,
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
             );
-            newAgent.transform.position = new Vector3(newAgent.transform.position.x, 10, newAgent.transform.position.y); // Ensure agents are positioned along the floor
-            // newAgent.center = transform.position;
+            
+            //Ensures agents are positioned along the floor
+            newAgent.transform.position = new Vector3(newAgent.transform.position.x, 10, newAgent.transform.position.y);
             newAgent.name = "Agent " + i;
             agents.Add(newAgent);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         for (int i = 0; i < agents.Count; i++)
@@ -70,9 +79,6 @@ public class Flock : MonoBehaviour
             }
 
             List<Transform> context = GetNearbyObjects(agent);
-
-            //For demo only
-            // agent.GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
 
             Vector2 move = behavior.CalculateMove(agent, context, this);
             move *= driveFactor;
@@ -87,6 +93,7 @@ public class Flock : MonoBehaviour
     List<Transform> GetNearbyObjects(FlockAgent agent)
     {
         List<Transform> context = new List<Transform>();
+
         //If in 3D, Collider3D Physics overlap sphere...
         Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighborRadius);
         foreach(Collider c in contextColliders)

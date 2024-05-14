@@ -1,3 +1,8 @@
+/**
+ * MICHAEL CALLE
+ * VR Project
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +15,7 @@ public class SteeredCohesionBehavior : FlockBehavior
 
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        //if no neighbors, return no adjustment
+        //If no neighbors, return no adjustment
         if (context.Count == 0)
         {
             return Vector3.zero;
