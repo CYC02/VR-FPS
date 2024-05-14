@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7487689262855397696}
   - component: {fileID: 7127820524405545126}
   - component: {fileID: 2360273508388560825}
+  - component: {fileID: 3241116626772897548}
   m_Layer: 19
   m_Name: PP_Forest_Mountain_Moss_01
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4890176300591525589, guid: d818648c1b009ab48a03dbcc4ae09583, type: 3}
+--- !u!208 &3241116626772897548
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934243734398890808}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 18.3, y: 23.35, z: 18.3}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

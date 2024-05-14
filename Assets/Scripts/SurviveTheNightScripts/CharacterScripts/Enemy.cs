@@ -6,6 +6,7 @@ public class Enemy : Character
 {
     public int damage = 10;
     public AudioSource attackSound;
+    public bool isNearPlayer;
 
     protected override void Awake()
     {

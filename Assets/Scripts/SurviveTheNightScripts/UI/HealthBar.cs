@@ -28,7 +28,7 @@ public class HealthBar : MonoBehaviour
         Slider healthBarSlider = GetComponentInChildren<Slider>();
         if (healthBarSlider != null)
         {   if (health <= 0) {
-                healthBarSlider.value = 0;
+                healthBarSlider.value = 0f;
             }
             else {
                 healthBarSlider.value = currentHealth;
