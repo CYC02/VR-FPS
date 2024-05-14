@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2987538717325956098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5933888780610900952}
+  - component: {fileID: 3421144361991178690}
+  m_Layer: 0
+  m_Name: SharkFlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5933888780610900952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987538717325956098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18751.1, y: 470, z: 9432.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3421144361991178690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987538717325956098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc93e2c132d08a742a43cbeedf627b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockUnitPrefab: {fileID: -4602715939083467473, guid: bd87787fd9a8b71458b07610c107e671, type: 3}
+  flockSize: 20
+  spawnBounds: {x: 200, y: 100, z: 200}
+  _minSpeed: 4.3
+  _maxSpeed: 6.4
+  _cohesionDistance: 5.1
+  _avoidanceDistance: 4.07
+  _alignmentDistance: 4.81
+  _obstacleDistance: 4.01
+  _boundsDistance: 43
+  _cohesionWeight: 5.17
+  _avoidanceWeight: 3.87
+  _alignmentWeight: 4.29
+  _boundsWeight: 4.58
+  _obstacleWeight: 40.1

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   focusDistance:
     overrideState: 1
-    value: 0.9
+    value: 500
   aperture:
     overrideState: 0
     value: 5.6
@@ -81,7 +81,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -45
+    value: -100
   tint:
     overrideState: 0
     value: 0
