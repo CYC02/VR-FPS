@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public abstract class Character : MonoBehaviour
 {
-    [SerializeField] int health = 100;
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] float speed = 50f;
+    public int health = 100;
+    public int maxHealth = 100;
+    public bool isDead = false;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -26,7 +26,8 @@ public abstract class Character : MonoBehaviour
         health -= damage;
         if (health <= 0) { 
             //Death
-            transform.gameObject.SetActive(false);
+            //transform.gameObject.SetActive(false);
+            isDead= true;
         }
         float currentHealth = health / maxHealth;
         GameObject healthBar = GetComponentInChildren<HealthBar>().gameObject;

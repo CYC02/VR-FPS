@@ -96,8 +96,6 @@ public class FieldOfView : MonoBehaviour
         {
             //found an object on the target mask
 
-            Debug.Log(rangeChecks);
-
             target = rangeChecks[0].transform;
 
             Vector3 directionToTarget = (target.position - transform.position).normalized;
