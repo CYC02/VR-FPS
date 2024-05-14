@@ -79,6 +79,19 @@ public class FieldOfView : MonoBehaviour
         // searching objects only on targetMask
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
+        /*
+        if (currentTarget == Target.Resource) {
+            //filter out the resource near player from rangeChecks
+            List<Collider> notNearResources = new List<Collider>();
+            foreach (Collider col in notNearResources) {
+                if (col.GetComponentInChildren<NearResource>().nearPlayer == false) {
+                    notNearResources.Add(col);
+                }
+            }
+            rangeChecks = notNearResources.ToArray();        
+        }
+        */
+
         if (rangeChecks.Length != 0)
         {
             //found an object on the target mask

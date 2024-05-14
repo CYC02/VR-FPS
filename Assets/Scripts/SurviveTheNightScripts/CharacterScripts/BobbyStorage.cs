@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Author: Cindy Chan
@@ -8,14 +9,17 @@ using UnityEngine;
  */
 public class BobbyStorage : MonoBehaviour
 {
-    [SerializeField] private int maxBackpackStorage = 10;
-    private int amountInBackpack = 0;
+    [SerializeField] private int maxBackpackStorage = 2;
+    public int amountInBackpack = 0;
     //private List<GameObject> items;
     //public GameObject objectInLeftHand;
     //public GameObject objectInRightHand;
     private bool isWearingBackpack = false;
     public GameObject backpack;
     private GameObject dropItem;
+    public GameObject getResourceButton;
+    public bool isBackpackFull = false;
+
     private void Start()
     {
         //items = new List<GameObject>();
@@ -31,18 +35,22 @@ public class BobbyStorage : MonoBehaviour
             if (isWearingBackpack)
             {
                 if (amountInBackpack < maxBackpackStorage)
-                {
-                    //items.Add(itemToAdd);
-                    amountInBackpack++;
+                {                    
                     if (backpack != null)
-                    {
+                    {   
+                        amountInBackpack++;
+
+                        itemToAdd.transform.SetParent(dropItem.transform);
                         Rigidbody rb = itemToAdd.GetComponent<Rigidbody>();
                         rb.isKinematic = true;
-
-                        //GameObject dropItem = backpack.transform.GetChild(2).gameObject;
-                        itemToAdd.transform.SetParent(dropItem.transform);
-
+                        itemToAdd.transform.localPosition= Vector3.zero;
                         itemToAdd.SetActive(false);
+
+                        //check if backpack is full
+                        if (amountInBackpack == maxBackpackStorage) {
+                            isBackpackFull = true;
+                            getResourceButton.GetComponent<Button>().interactable = false;
+                        }
                     }
                     else {
                         Debug.LogError("backpack is null");
@@ -69,10 +77,15 @@ public class BobbyStorage : MonoBehaviour
         {
             Debug.Log("drop item from bag");
             amountInBackpack--;
+            isBackpackFull = false;
             GameObject firstItemInBag = dropItem.transform.GetChild(0).gameObject;
             firstItemInBag.SetActive(true);
-            firstItemInBag.GetComponent<Rigidbody>().isKinematic = false;
+            firstItemInBag.transform.localPosition = Vector3.zero;
             firstItemInBag.transform.SetParent(null);
+
+            Rigidbody rb = firstItemInBag.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+
         }
         else {
             Debug.LogWarning("Nothing to drop from the backpack");
@@ -82,6 +95,9 @@ public class BobbyStorage : MonoBehaviour
     //function is trigger from the select event of the Backpack socket interactor
     public void WearingBackpack(bool isWearing) {
         isWearingBackpack = isWearing;
+        if (getResourceButton) {
+            getResourceButton.GetComponent<Button>().interactable = isWearing;
+        }
     }
 
     public bool IsWearingBackpack() { return isWearingBackpack; }

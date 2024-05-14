@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    [SerializeField] int damage = 10;
+    public int damage = 10;
     // Start is called before the first frame update
     protected override void Start()
     {

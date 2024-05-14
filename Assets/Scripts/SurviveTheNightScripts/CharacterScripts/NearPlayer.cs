@@ -10,18 +10,22 @@ using UnityEngine;
 public class NearPlayer : MonoBehaviour
 {
     public bool isBobbyNear;
+    public bool isEnemyNear;
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Bobby")) {
             isBobbyNear = true;
         }
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Grab")) {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Resource")) {
             NearResource nearResource = collider.gameObject.GetComponentInChildren<NearResource>();
             if (nearResource != null)
             {
                 nearResource.nearPlayer = true;
             }
+        }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            isEnemyNear = true;
         }
     }
 
@@ -31,13 +35,17 @@ public class NearPlayer : MonoBehaviour
         {
             isBobbyNear = false;
         }
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Grab"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Resource"))
         {
             NearResource nearResource = collider.gameObject.GetComponentInChildren<NearResource>();
             if (nearResource != null)
             {
                 nearResource.nearPlayer = false;
             }
+        }
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            isEnemyNear = false;
         }
     }
 }
