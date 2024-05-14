@@ -36,7 +36,7 @@ public class IdleState : State
                             
                             if (bobbyGaze.isHovered)
                             {
-                                ResetAnimationTrigger("Idle");
+                                //ResetAnimationTrigger("Idle");
                                 return commState;
                             }
                             else {

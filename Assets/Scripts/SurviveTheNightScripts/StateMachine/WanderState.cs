@@ -15,6 +15,7 @@ using UnityEngine.AI;
 public class WanderState : State
 {
     public GoToPlayerState goToPlayerState;
+    public AttackState attackState;
     public float cooldownTime = 3f;
     private float lastUsedTime;
     public override State RunCurrentState()
@@ -56,6 +57,11 @@ public class WanderState : State
                     ResetAnimationTrigger("Walk");
                     return goToPlayerState;
                 }
+            }
+            if (character.CompareTag("Enemy")) {
+                ResetAnimationTrigger("Walk");
+                SetAnimationTrigger("Idle");
+                return attackState;
             }
         }
         return this;

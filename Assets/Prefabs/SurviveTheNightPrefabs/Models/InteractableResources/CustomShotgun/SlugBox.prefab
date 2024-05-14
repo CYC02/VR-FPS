@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 1836680652089790032}
   - component: {fileID: 747018601842616937}
   - component: {fileID: 4979121624203079229}
+  - component: {fileID: 5817038504667023355}
   m_Layer: 11
   m_Name: SlugBox
   m_TagString: Untagged
@@ -288,8 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 3674447735333971236}
-  - {fileID: 1816557246395628384}
+  - {fileID: 5817038504667023355}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -532,6 +532,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &5817038504667023355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725004615922457219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16221884, y: 0.08369553, z: 0.12231922}
+  m_Center: {x: -0.0006296744, y: -0.000006854534, z: 0.00058054924}
 --- !u!1 &2811761776018708369
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +564,6 @@ GameObject:
   - component: {fileID: 761565691209547133}
   - component: {fileID: 2103616271255004850}
   - component: {fileID: 7605078486880907854}
-  - component: {fileID: 3674447735333971236}
   m_Layer: 11
   m_Name: slugBoxClosed
   m_TagString: Untagged
@@ -617,27 +637,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3674447735333971236
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2811761776018708369}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.019999994, z: 0.019999998}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4344861355071889199
 GameObject:
   m_ObjectHideFlags: 0
