@@ -60,6 +60,7 @@ public class WanderState : State
             }
             if (character.CompareTag("Enemy")) {
                 ResetAnimationTrigger("Walk");
+                SetAnimationTrigger("Idle");
                 return attackState;
             }
         }
