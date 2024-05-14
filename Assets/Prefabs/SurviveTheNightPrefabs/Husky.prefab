@@ -115,7 +115,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -188,8 +188,10 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   isDead: 0
-  damage: 10
+  healthBar: {fileID: 5543532424430722744}
+  damage: 5
   attackSound: {fileID: 3153723440965406858}
+  isNearPlayer: 0
 --- !u!114 &2337775264328100078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,6 +649,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 15483348427607036, guid: a4f2e51d899e8f640b0224888630771f, type: 3}
   m_PrefabInstance: {fileID: 2763125924203172416}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5543532424430722744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7689347969740442872, guid: a4f2e51d899e8f640b0224888630771f, type: 3}
+  m_PrefabInstance: {fileID: 2763125924203172416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d392286e94501d4ab7be9f358ad59be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3483780219385918504
 PrefabInstance:
   m_ObjectHideFlags: 0

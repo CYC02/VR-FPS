@@ -10,7 +10,7 @@ using UnityEngine;
 public class NearPlayer : MonoBehaviour
 {
     public bool isBobbyNear;
-    public bool isEnemyNear;
+    //public bool isEnemyNear;
 
     void OnTriggerEnter(Collider collider)
     {
@@ -25,7 +25,8 @@ public class NearPlayer : MonoBehaviour
             }
         }
         if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-            isEnemyNear = true;
+            //isEnemyNear = true;
+            collider.gameObject.GetComponent<Enemy>().isNearPlayer= true;
         }
     }
 
@@ -45,7 +46,9 @@ public class NearPlayer : MonoBehaviour
         }
         if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            isEnemyNear = false;
+            //isEnemyNear = false;
+            collider.gameObject.GetComponent<Enemy>().isNearPlayer = true;
+
         }
     }
 }

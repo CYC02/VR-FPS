@@ -8,12 +8,17 @@ public abstract class Character : MonoBehaviour
     public int health = 100;
     public int maxHealth = 100;
     public bool isDead = false;
-    private HealthBar healthBar;
+    public HealthBar healthBar;
+
+    protected virtual void Awake()
+    {
+        //healthBar = GetComponentInChildren<HealthBar>();
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        healthBar = GetComponentInChildren<HealthBar>();
+        //healthBar = GetComponentInChildren<HealthBar>();
     }
 
     // Update is called once per frame
@@ -24,25 +29,28 @@ public abstract class Character : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        if (healthBar == null) {
+            healthBar = GetComponentInChildren<HealthBar>();
+        }
+
         health -= damage;
         if (health <= 0)
         {
             //Death
             //transform.gameObject.SetActive(false);
+            health = 0;
             isDead = true;
+            healthBar.ChangeHealthBarSliderValue(0f, maxHealth);
         }
         else {
-            //float currentHealth = (float) health / (float) maxHealth;
-            //GameObject healthBar = GetComponentInChildren<HealthBar>().gameObject;
-            /*
-            if (healthBar != null) {
-                Slider healthBarSlider = healthBar.GetComponentInChildren<Slider>();
-                if (healthBarSlider != null) {
-                    healthBarSlider.value = currentHealth;
-                }
-            }      
-            */
-            healthBar.ChangeHealthBarSliderValue(health,maxHealth);
+            if (healthBar != null)
+            {
+                healthBar.ChangeHealthBarSliderValue(health, maxHealth);
+            }
+            else {
+                Debug.LogError("HealthBar is missing");
+            }            
+
         }
 
     }

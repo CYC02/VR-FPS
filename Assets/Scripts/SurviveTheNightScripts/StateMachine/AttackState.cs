@@ -20,6 +20,7 @@ public class AttackState : State
 
     public override State RunCurrentState()
     {
+        navMeshAgent.isStopped= false;
         if (enemy != null)
         {
             //if dead play death animation and disappear.death state
@@ -28,7 +29,7 @@ public class AttackState : State
                 ResetAnimationTrigger("Gallop");
                 ResetAnimationTrigger("Idle");
                 ResetAnimationTrigger("Attack");
-                ResetAnimationTrigger("Idle");
+                SetAnimationTrigger("Idle");
                 return deathState;
             }
             else {
@@ -54,7 +55,8 @@ public class AttackState : State
             Debug.LogError("Enemy script is missing");
         }
 
-        if (nearPlayer.isEnemyNear)
+        //if (nearPlayer.isEnemyNear)
+        if(enemy.isNearPlayer)
         {
             navMeshAgent.isStopped = true;
             character.transform.LookAt(fieldView.player.transform);
