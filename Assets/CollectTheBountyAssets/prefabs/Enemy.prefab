@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   mooseModel: {fileID: 5522696665734708555}
+  health_textfield: {fileID: 8143715721013852241}
 --- !u!195 &392058059435167911
 NavMeshAgent:
   m_ObjectHideFlags: 0

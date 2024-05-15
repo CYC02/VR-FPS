@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
+
 public class j_enemy : MonoBehaviour
 {
 
     public Transform player;
     private NavMeshAgent moose;
     public GameObject mooseModel;
-    public Animator mooseAnim;
+    public GameObject health_textfield;
 
-    int health = 100;
+    int moose_health = 100;
     int damage = 10;
 
-
+    Animator mooseAnim;
+    TextMeshProUGUI health_text;
 
 
     // Start is called before the first frame update
@@ -21,8 +24,10 @@ public class j_enemy : MonoBehaviour
     {
         moose = GetComponent<NavMeshAgent>();
         mooseAnim = GetComponentInChildren<Animator>();
+        health_text = health_textfield.GetComponent<TextMeshProUGUI>();
+        health_text.text = "H:" + moose_health;
+
         mooseAnim.SetFloat("moose_speed", 1);
-        // Debug.Log(moose.speed);
         gameObject.SetActive(false);
     }
 
@@ -40,16 +45,17 @@ public class j_enemy : MonoBehaviour
         {
             mooseAnim.SetFloat("moose_speed", 1);
         }
-
-
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Bullet(Clone)")
         {
-            health -= damage;
-            if (health <= 0)
+            moose_health -= damage;
+
+            updateMooseHealth();
+
+            if (moose_health <= 0)
             {
                 Destroy(gameObject);
             }
@@ -61,5 +67,10 @@ public class j_enemy : MonoBehaviour
     public void activateEnemy()
     {
         gameObject.SetActive(true);
+    }
+
+    void updateMooseHealth()
+    {
+        health_text.text = "H:" + moose_health;
     }
 }
