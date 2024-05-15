@@ -1720,6 +1720,10 @@ PrefabInstance:
       propertyPath: ammo_textfield
       value: 
       objectReference: {fileID: 1473323652}
+    - target: {fileID: 620772015077270069, guid: c49e2ba3eba674cd792d9fdf663e219f, type: 3}
+      propertyPath: bullet_spawner
+      value: 
+      objectReference: {fileID: 1487365562}
     - target: {fileID: 5261141056908157880, guid: c49e2ba3eba674cd792d9fdf663e219f, type: 3}
       propertyPath: m_Name
       value: Gun
@@ -5114,6 +5118,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2960869468169201085, guid: d6038af1df00c46f884ea4e6ca95da85, type: 3}
   m_PrefabInstance: {fileID: 1018053058}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1487365561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487365562}
+  m_Layer: 0
+  m_Name: bullet_spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487365562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487365561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.462, y: 0.77, z: 23.751}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1488914467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2960869468169201085, guid: d6038af1df00c46f884ea4e6ca95da85, type: 3}
@@ -7803,3 +7838,4 @@ SceneRoots:
   - {fileID: 2056254314}
   - {fileID: 1392365149}
   - {fileID: 2066642124}
+  - {fileID: 1487365562}

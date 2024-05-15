@@ -7,6 +7,7 @@ using TMPro;
 
 public class j_weapon : MonoBehaviour
 {
+    public Transform bullet_spawner;
     public GameObject bullet;
     public Transform bullet_spawn_area;
     public XRSocketInteractor ammo_socket;
@@ -20,6 +21,8 @@ public class j_weapon : MonoBehaviour
     float load_volume = 0.1f;
     float bullet_force = 20f;
     int ammo_count = 10;
+
+    bool spawned_ammo = false;
 
     TextMeshProUGUI ammo_text;
 
@@ -51,6 +54,16 @@ public class j_weapon : MonoBehaviour
             ammo_count -= 1;
 
             updateAmmoText();
+
+            if (ammo_count <= 0)
+            {
+                spawned_ammo = false;
+            }
+        }
+
+        if (ammo_count <= 0 && !spawned_ammo)
+        {
+            spawnMoreAmmo();
         }
     }  
     void updateAmmoText()
@@ -61,4 +74,12 @@ public class j_weapon : MonoBehaviour
         ammo_substr += ammo_count.ToString();
         ammo_text.text = ammo_substr;
     }
+
+    void spawnMoreAmmo()
+    {
+        var position = new Vector3(bullet_spawner.position.x, bullet_spawner.position.y, bullet_spawner.position.z);
+        var b = Instantiate(bullet, position, bullet_spawner.rotation);
+        spawned_ammo = true;
+    }
+
 }
