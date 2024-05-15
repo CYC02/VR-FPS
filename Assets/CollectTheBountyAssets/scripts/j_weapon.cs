@@ -12,6 +12,12 @@ public class j_weapon : MonoBehaviour
     public XRSocketInteractor ammo_socket;
     public GameObject ammo_textfield;
 
+    public AudioClip shoot_sound;
+    public AudioClip load_sound;
+    AudioSource audio_source;
+
+    float shoot_volume = 0.1f;
+    float load_volume = 0.1f;
     float bullet_force = 20f;
     int ammo_count = 10;
 
@@ -22,9 +28,11 @@ public class j_weapon : MonoBehaviour
     {
         ammo_socket.onSelectEntered.AddListener(LoadWeapon);
         ammo_text = ammo_textfield.GetComponent<TextMeshProUGUI>();
+        audio_source = GetComponent<AudioSource>();
     }
     public void LoadWeapon(XRBaseInteractable ammo)
     {
+        audio_source.PlayOneShot(load_sound, load_volume);
         ammo_count += 1;
         Destroy(ammo.gameObject);
 
@@ -35,6 +43,7 @@ public class j_weapon : MonoBehaviour
     {
         if (ammo_count > 0)
         {
+            audio_source.PlayOneShot(shoot_sound, shoot_volume);
             var position = new Vector3(bullet_spawn_area.position.x, bullet_spawn_area.position.y, bullet_spawn_area.position.z);
             var b = Instantiate(bullet, position, bullet_spawn_area.rotation);
             var b_rigidbody = b.GetComponent<Rigidbody>();

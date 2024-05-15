@@ -219,6 +219,11 @@ MonoBehaviour:
   player: {fileID: 0}
   mooseModel: {fileID: 5522696665734708555}
   health_textfield: {fileID: 8143715721013852241}
+  end_textfield: {fileID: 0}
+  big_canvas: {fileID: 0}
+  reset_button: {fileID: 0}
+  start_button: {fileID: 0}
+  moose_steps: {fileID: 8300000, guid: 54da7a6507d4840dfb9ccb626513875d, type: 3}
 --- !u!195 &392058059435167911
 NavMeshAgent:
   m_ObjectHideFlags: 0
