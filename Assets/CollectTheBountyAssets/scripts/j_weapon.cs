@@ -12,9 +12,9 @@ public class j_weapon : MonoBehaviour
     public XRSocketInteractor ammo_socket;
     public GameObject ammo_textfield;
 
-    float bullet_force = 8f;
+    float bullet_force = 10f;
     int ammo_count = 10;
-    
+
     TextMeshProUGUI ammo_text;
 
     // Start is called before the first frame update
@@ -36,7 +36,7 @@ public class j_weapon : MonoBehaviour
         if (ammo_count > 0)
         {
             var position = new Vector3(bullet_spawn_area.position.x, bullet_spawn_area.position.y, bullet_spawn_area.position.z);
-            var b = Instantiate(bullet, position, Quaternion.identity);
+            var b = Instantiate(bullet, position, bullet_spawn_area.rotation);
             var b_rigidbody = b.GetComponent<Rigidbody>();
             b_rigidbody.AddForce(bullet_spawn_area.forward * bullet_force, ForceMode.Impulse);
             ammo_count -= 1;

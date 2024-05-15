@@ -1753,19 +1753,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1392365149}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.714735
+      value: 1.2010155
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03999996
+      value: 3.928535
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.21493
+      value: -9.448027
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1961,7 +1961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8395011388356296673, guid: c49e2ba3eba674cd792d9fdf663e219f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.820955
+      value: -10.913
       objectReference: {fileID: 0}
     - target: {fileID: 8395011388356296673, guid: c49e2ba3eba674cd792d9fdf663e219f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2694,7 +2694,7 @@ Transform:
   m_GameObject: {fileID: 884987165}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.209402, y: 5.9271026, z: -11.395445}
+  m_LocalPosition: {x: 3.209402, y: 5.9271026, z: -11.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4485,7 +4485,7 @@ Transform:
   m_GameObject: {fileID: 1243435023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.05, y: 0, z: 22.8}
+  m_LocalPosition: {x: 25.05, y: 0, z: 23.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4806,6 +4806,7 @@ Transform:
   - {fileID: 125362054}
   - {fileID: 1312543090}
   - {fileID: 1665003931}
+  - {fileID: 1520887220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396604010
@@ -5200,6 +5201,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1520887220 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c35e61f402b4e4a9393a93a3ffb2017f, type: 3}
+  m_PrefabInstance: {fileID: 515481620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1556275303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8395011388356296673, guid: c49e2ba3eba674cd792d9fdf663e219f, type: 3}
@@ -5304,8 +5310,8 @@ Transform:
   m_GameObject: {fileID: 1562035517}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.4862804, y: 4.118535, z: -10.662956}
-  m_LocalScale: {x: 1.2717, y: 0.9545978, z: 1}
+  m_LocalPosition: {x: 3.4862804, y: 4.118535, z: -10.9131}
+  m_LocalScale: {x: 1.2717, y: 0.9545978, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1665003931}
@@ -7141,13 +7147,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You can teleport on the street.
+  m_text: 'Load gun first.
 
-    Load your gun first.
+    Teleport: Left control only. Hold ''X'' then grip
+    to teleport on gray area.
 
 
-    Kill the
-    moose. Good luck.'
+    Kill the moose. Good luck.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7174,8 +7180,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7605,4 +7611,3 @@ SceneRoots:
   - {fileID: 1367663744}
   - {fileID: 2056254314}
   - {fileID: 1392365149}
-  - {fileID: 515481620}

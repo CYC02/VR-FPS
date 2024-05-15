@@ -6,7 +6,6 @@ using TMPro;
 
 public class j_enemy : MonoBehaviour
 {
-
     public Transform player;
     private NavMeshAgent moose;
     public GameObject mooseModel;
