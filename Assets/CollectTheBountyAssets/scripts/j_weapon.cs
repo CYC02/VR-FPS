@@ -51,6 +51,5 @@ public class j_weapon : MonoBehaviour
         var ammo_substr = ammo_str.Substring(0, ammo_index + 2);
         ammo_substr += ammo_count.ToString();
         ammo_text.text = ammo_substr;
-        Debug.Log(ammo_text.text);
     }
 }
