@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//Author: Cindy Chan
+//Manages whether the win or lose screen is shown
 public class WinLoseScreen : MonoBehaviour
 {
     public TextMeshProUGUI textMesh;

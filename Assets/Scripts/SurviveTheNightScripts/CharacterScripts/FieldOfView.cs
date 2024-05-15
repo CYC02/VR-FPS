@@ -6,6 +6,9 @@ using UnityEngine;
 
 /*
  * reference: https://www.youtube.com/watch?v=j1-OyLo77ss
+ * Author: Cindy Chan
+ * Field of view is used for characters to see other characters. 
+ * the field of view is blocked by objects in the Obstruction layer.
  */
 public class FieldOfView : MonoBehaviour
 {

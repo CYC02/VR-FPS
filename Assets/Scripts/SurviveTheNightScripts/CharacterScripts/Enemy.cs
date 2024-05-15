@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Author: Cindy Chan
+// Inherits from Character class
 public class Enemy : Character
 {
     public int damage = 10;

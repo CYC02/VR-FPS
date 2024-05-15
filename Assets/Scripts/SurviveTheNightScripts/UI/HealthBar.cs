@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Author: Cindy Chan
+//Manages the health bar UI for characters
 public class HealthBar : MonoBehaviour
 {
     private Camera mainCamera;

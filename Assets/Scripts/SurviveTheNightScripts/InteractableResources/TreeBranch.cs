@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Author: Cindy Chan
+//Manages tree branches
 public class TreeBranch : InteractableResource
 {
     [SerializeField] private AudioSource stepTreeBranchSound;

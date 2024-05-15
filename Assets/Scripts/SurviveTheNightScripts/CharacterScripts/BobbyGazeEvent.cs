@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+//Author: Cindy Chan
+//Script help detect whether the player is gazing at Bobby
 public class BobbyGazeEvent : MonoBehaviour
 {
     [SerializeField] private XRSocketInteractor leftHandSocket;

@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
 
+//Author: Cindy Chan
+//Manages the Camera canvas to view the surveillance cameras
+
 public class CamerasCanvas : MonoBehaviour
 {
     InputInfo inputInfo;

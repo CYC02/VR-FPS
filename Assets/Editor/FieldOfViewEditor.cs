@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 //source: https://www.youtube.com/watch?v=j1-OyLo77ss
+//Used to make the Field of View gizmo in the scene view
 
 [CustomEditor(typeof(FieldOfView))]
 

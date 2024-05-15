@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+//Author: Cindy Chan
+//The character looks around and keeps a look out.
 public class AlertState : State
 {
     public CommunicateWithPlayerState commState;

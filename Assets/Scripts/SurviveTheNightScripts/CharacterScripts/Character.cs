@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//Author: Cindy Chan
+//Base class of enemies and player
 public abstract class Character : MonoBehaviour
 {
     public int health = 100;

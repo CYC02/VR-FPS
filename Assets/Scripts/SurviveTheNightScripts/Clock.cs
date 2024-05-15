@@ -4,6 +4,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+//Author: Cindy Chan
+//Keeps track of the time and updates the time text UI on the phone
 public class Clock : MonoBehaviour
 {
     public float clockSpeed = 60f; // 1 hour in game = 1 min in real life

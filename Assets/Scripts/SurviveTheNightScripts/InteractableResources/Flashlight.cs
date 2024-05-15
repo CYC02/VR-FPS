@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Author: Cindy Chan
+//Manages the flashlight
 public class Flashlight : InteractableResource
 {
     [SerializeField] private Light light;
