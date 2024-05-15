@@ -38,7 +38,10 @@ public class j_enemy : MonoBehaviour
 
         if (moose.remainingDistance < 2)
         {
-            mooseAnim.SetFloat("moose_speed", 0);
+            // mooseAnim.SetFloat("moose_speed", 0);
+            mooseAnim.SetTrigger("moose_charge");
+            var position = new Vector3(player.position.x, gameObject.transform.position.y, player.position.z);
+            gameObject.transform.LookAt(position);
         }
         else
         {
