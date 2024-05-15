@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
+
 
 public class j_enemy : MonoBehaviour
 {
@@ -10,21 +13,29 @@ public class j_enemy : MonoBehaviour
     private NavMeshAgent moose;
     public GameObject mooseModel;
     public GameObject health_textfield;
+    public GameObject end_textfield;
+    public GameObject big_canvas;
+    public Button reset_button;
+    public Button start_button;
 
     int moose_health = 100;
     int damage = 10;
 
     Animator mooseAnim;
     TextMeshProUGUI health_text;
+    TextMeshProUGUI end_text;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        reset_button.gameObject.SetActive(false);
         moose = GetComponent<NavMeshAgent>();
         mooseAnim = GetComponentInChildren<Animator>();
         health_text = health_textfield.GetComponent<TextMeshProUGUI>();
         health_text.text = "H:" + moose_health;
+
+        end_text = end_textfield.GetComponent<TextMeshProUGUI>();
 
         mooseAnim.SetFloat("moose_speed", 1);
         gameObject.SetActive(false);
@@ -60,6 +71,11 @@ public class j_enemy : MonoBehaviour
             if (moose_health <= 0)
             {
                 Destroy(gameObject);
+                big_canvas.SetActive(true);
+                start_button.gameObject.SetActive(false);
+                reset_button.gameObject.SetActive(true);
+
+                end_text.text = "You win! Restart the scene?";
             }
 
             Destroy(collision.gameObject);
@@ -75,4 +91,10 @@ public class j_enemy : MonoBehaviour
     {
         health_text.text = "H:" + moose_health;
     }
+
+    public void resetScene()
+    {
+        SceneManager.LoadScene("CollectTheBounty") ;
+    }
+
 }
