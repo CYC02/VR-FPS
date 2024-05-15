@@ -12,7 +12,7 @@ public class j_weapon : MonoBehaviour
     public XRSocketInteractor ammo_socket;
     public GameObject ammo_textfield;
 
-    float bullet_force = 10f;
+    float bullet_force = 20f;
     int ammo_count = 10;
 
     TextMeshProUGUI ammo_text;
