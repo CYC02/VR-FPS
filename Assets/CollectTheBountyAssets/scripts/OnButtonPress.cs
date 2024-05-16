@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-
+// Jenny Ton
 // SOURCE: FROM CREATE WITH VR UNITY LEARN
+// Used with the left hand controller for the ray
 
 /// <summary>
 /// Checks for button input on an input action

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Jenny Ton
+// UNUSED: Meant for spawning ammo boxes around the area for the player to pick up to load their gun
+// case convention was different, kept using underscores so went with that in other files
+
 public class j_spawn_ammo : MonoBehaviour
 {
     public GameObject ammoBox;
@@ -34,15 +38,12 @@ public class j_spawn_ammo : MonoBehaviour
     {
         int randomizeNumber = Random.Range(0, 20);
         int chosenRandomNumber = Random.Range(0, 20);
-        // Debug.Log(randomizeNumber);
-        // Debug.Log(chosenRandomNumber);
 
         if (randomizeNumber == chosenRandomNumber)
         {
             var position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             Instantiate(ammoBox, position, Quaternion.identity);
             spawnedAmmo = true;
-            // Debug.Log("Spawned");
         }
         else
         {

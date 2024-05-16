@@ -5,6 +5,9 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
 
+// Jenny Ton
+// Weapon shoot/load bullets (with sounds), update ammo counter, spawn ammo when there is no more in the gun
+
 public class j_weapon : MonoBehaviour
 {
     public Transform bullet_spawner;

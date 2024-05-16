@@ -6,12 +6,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// Jenny Ton
+// All things related to the moose, AI, animation, bullet collision, win message
+// Could have been organized better
 
 public class j_enemy : MonoBehaviour
 {
     public Transform player;
     private NavMeshAgent moose;
-    public GameObject mooseModel;
+    public GameObject moose_model;
     public GameObject health_textfield;
     public GameObject end_textfield;
     public GameObject big_canvas;
@@ -21,7 +24,7 @@ public class j_enemy : MonoBehaviour
     int moose_health = 100;
     int damage = 10;
 
-    Animator mooseAnim;
+    Animator moose_anim;
     TextMeshProUGUI health_text;
     TextMeshProUGUI end_text;
 
@@ -31,13 +34,13 @@ public class j_enemy : MonoBehaviour
     {
         reset_button.gameObject.SetActive(false);
         moose = GetComponent<NavMeshAgent>();
-        mooseAnim = GetComponentInChildren<Animator>();
+        moose_anim = GetComponentInChildren<Animator>();
         health_text = health_textfield.GetComponent<TextMeshProUGUI>();
         health_text.text = "H:" + moose_health;
 
         end_text = end_textfield.GetComponent<TextMeshProUGUI>();
 
-        mooseAnim.SetFloat("moose_speed", 1);
+        moose_anim.SetFloat("moose_speed", 1);
         gameObject.SetActive(false);
     }
 
@@ -50,13 +53,13 @@ public class j_enemy : MonoBehaviour
         if (moose.remainingDistance < 2)
         {
             // mooseAnim.SetFloat("moose_speed", 0);
-            mooseAnim.SetTrigger("moose_charge");
+            moose_anim.SetTrigger("moose_charge");
             var position = new Vector3(player.position.x, gameObject.transform.position.y, player.position.z);
             gameObject.transform.LookAt(position);
         }
         else
         {
-            mooseAnim.SetFloat("moose_speed", 1);
+            moose_anim.SetFloat("moose_speed", 1);
         }
     }
 

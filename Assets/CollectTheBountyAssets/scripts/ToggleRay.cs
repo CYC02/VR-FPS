@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
+// Jenny Ton
 // SOURCE: FROM CREATE WITH VR UNITY LEARN
+// Used for the left hand ray
 
 /// <summary>
 /// Toggle between the direct and ray interactor if the direct interactor isn't touching any objects
